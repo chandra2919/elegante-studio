@@ -1,0 +1,313 @@
+"use client";
+import { useState, useRef } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { GoldDivider } from "@/components/ui/GoldDivider";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+
+const SERVICES_LIST = [
+  "Interior Design — Residential",
+  "Interior Design — Commercial",
+  "Event Styling",
+  "Furniture Curation",
+  "Window Treatments & Drapery",
+  "Floral Installations",
+  "Full Studio Package",
+];
+
+let inputCounter = 0; // module-level counter for stable IDs
+
+function LuxuryInput({
+  label,
+  type = "text",
+  placeholder,
+  required = false,
+  as = "input",
+  rows,
+  children,
+}: {
+  label: string;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+  as?: "input" | "select" | "textarea";
+  rows?: number;
+  children?: React.ReactNode;
+}) {
+  const lineRef = useRef<HTMLSpanElement>(null);
+  // Stable ID per instance for label association
+  const idRef = useRef<string>(`field-${++inputCounter}`);
+  const id = idRef.current;
+
+  const onFocus = () => {
+    if (lineRef.current) gsap.to(lineRef.current, { scaleX: 1, duration: 0.4, ease: "power2.out", overwrite: true });
+  };
+  const onBlur = () => {
+    if (lineRef.current) gsap.to(lineRef.current, { scaleX: 0, duration: 0.3, ease: "power2.in", overwrite: true });
+  };
+
+  const sharedCls = "w-full bg-transparent border-none outline-none font-inter text-sm text-luxury-black placeholder-luxury-gray/40 pb-2 pt-2 focus-visible:outline-none";
+
+  return (
+    <div className="relative group">
+      {/* htmlFor links label to input — accessibility fix */}
+      <label htmlFor={id} className="eyebrow text-[8px] block mb-2 text-luxury-gold/80">{label}</label>
+      <div className="relative border-b border-luxury-gold/20">
+        {as === "textarea" ? (
+          <textarea
+            id={id}
+            name={id}
+            rows={rows ?? 4}
+            placeholder={placeholder}
+            required={required}
+            aria-required={required}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            className={`${sharedCls} resize-none`}
+          />
+        ) : as === "select" ? (
+          <select
+            id={id}
+            name={id}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            className={`${sharedCls} cursor-pointer appearance-none`}
+            aria-label={label}
+          >
+            {children}
+          </select>
+        ) : (
+          <input
+            id={id}
+            name={id}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            aria-required={required}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            className={sharedCls}
+          />
+        )}
+        {/* Animated gold underline */}
+        <span
+          ref={lineRef}
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-px bg-luxury-gold"
+          style={{ transformOrigin: "left", transform: "scaleX(0)" }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default function ContactPage() {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading,   setLoading]   = useState(false);
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    if (btnRef.current) {
+      gsap.to(btnRef.current, { scale: 0.98, duration: 0.1, yoyo: true, repeat: 1 });
+    }
+    await new Promise((r) => setTimeout(r, 1800));
+    setLoading(false);
+    setSubmitted(true);
+  }
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative flex items-end pb-24 overflow-hidden" style={{ minHeight: "62vh" }}>
+        <Image src="/images/BW8A3383.jpg" alt="Contact Eleganté" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/80 via-luxury-black/35 to-transparent" />
+        <div className="container-luxury relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-px bg-luxury-gold" />
+              <span className="eyebrow text-luxury-gold">Begin Your Journey</span>
+            </div>
+            <h1 className="font-cormorant font-light text-white leading-[1.05] mb-4" style={{ fontSize: "clamp(48px,5.5vw,88px)" }}>
+              Let's Create Something<br />
+              <em className="italic text-luxury-gold font-light">Extraordinary</em>
+            </h1>
+            <p className="text-body-lg text-white/55 max-w-xl font-light">
+              Every great space begins with a conversation. We would love to hear about your vision.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="section-pad bg-luxury-cream">
+        <div className="container-luxury">
+          <div className="grid lg:grid-cols-2 gap-20 xl:gap-28">
+
+            {/* Left — Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <span className="w-10 h-px bg-luxury-gold" />
+                <span className="eyebrow">Studio Information</span>
+              </div>
+              <h2 className="font-cormorant font-light text-luxury-black mb-8 leading-[1.1]" style={{ fontSize: "clamp(32px,3.5vw,54px)" }}>
+                Visit the<br />
+                <em className="italic text-luxury-pink font-light">Eleganté Studio</em>
+              </h2>
+
+              <div className="flex flex-col gap-8 mb-12">
+                {[
+                  { label: "Studio Location", icon: "📍", content: "1046 S Telegraph Rd\nPontiac, MI 48341" },
+                  { label: "Studio Hours",    icon: "🕐", content: "Monday – Saturday: 10:00 AM – 6:00 PM\nSunday: By Appointment Only" },
+                  { label: "Private Line",    icon: "📞", content: "(248) 555-0198" },
+                  { label: "Email",           icon: "✉️", content: "hello@elegante-studio.com" },
+                ].map(({ label, icon, content }) => (
+                  <div key={label} className="flex items-start gap-5 group">
+                    <div className="w-12 h-12 border border-luxury-gold/20 flex items-center justify-center text-xl flex-shrink-0 transition-all duration-400 group-hover:bg-luxury-gold group-hover:border-luxury-gold">
+                      {icon}
+                    </div>
+                    <div>
+                      <div className="eyebrow text-[8.5px] mb-1.5">{label}</div>
+                      <p className="text-body-md text-luxury-gray font-light whitespace-pre-line">{content}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <GoldDivider className="mb-12 opacity-35" />
+
+              {/* FAQs */}
+              <div className="eyebrow mb-6">Quick Answers</div>
+              {[
+                { q: "What happens after I submit?", a: "Our design team reviews your enquiry and contacts you within 24 hours to schedule your private consultation." },
+                { q: "Is the consultation free?",   a: "Yes — your initial design consultation is complimentary. We believe in building relationships before we build spaces." },
+                { q: "Do you work outside Michigan?", a: "We primarily serve Michigan but accept select national commissions for existing clients and high-profile projects." },
+              ].map(({ q, a }) => (
+                <details key={q} className="group mb-4 border-b border-luxury-gold/12 pb-4 cursor-pointer">
+                  <summary className="flex items-center justify-between font-cormorant text-lg text-luxury-black font-light list-none select-none">
+                    {q}
+                    <span className="text-luxury-gold ml-4 flex-shrink-0 transition-transform duration-300 group-open:rotate-45 text-xl">+</span>
+                  </summary>
+                  <p className="text-body-sm text-luxury-gray mt-3 font-light leading-relaxed">{a}</p>
+                </details>
+              ))}
+            </motion.div>
+
+            {/* Right — Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="bg-luxury-warm border border-luxury-gold/15 p-10 lg:p-14 relative">
+                {/* Gold accent top */}
+                <div className="absolute top-0 left-0 w-24 h-0.5 bg-gradient-to-r from-luxury-pink to-luxury-gold" />
+                {/* Subtle corner ornaments */}
+                <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-luxury-gold/25" />
+                <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-luxury-gold/25" />
+
+                <AnimatePresence mode="wait">
+                  {submitted ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.94 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      className="flex flex-col items-center justify-center py-16 text-center"
+                    >
+                      {/* Animated checkmark */}
+                      <motion.div
+                        initial={{ scale: 0, rotate: -90 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1, ease: [0.175, 0.885, 0.32, 1.275] }}
+                        className="w-16 h-16 rounded-full bg-luxury-gold/15 border border-luxury-gold/40 flex items-center justify-center mb-6"
+                      >
+                        <span className="text-luxury-gold text-2xl">✦</span>
+                      </motion.div>
+                      <h3 className="font-cormorant text-3xl text-luxury-black font-light mb-4">Thank You</h3>
+                      <p className="text-body-md text-luxury-gray font-light leading-relaxed max-w-sm mb-8">
+                        Your enquiry has been received. Our team will be in touch within 24 hours.
+                      </p>
+                      <button
+                        onClick={() => setSubmitted(false)}
+                        className="eyebrow text-[9px] text-luxury-gold underline-draw hover:text-luxury-black transition-colors duration-300"
+                      >
+                        Submit another enquiry
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.form
+                      key="form"
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onSubmit={handleSubmit}
+                      className="flex flex-col gap-6"
+                    >
+                      <h3 className="font-cormorant text-2xl text-luxury-black font-light mb-2">
+                        Book a Private Consultation
+                      </h3>
+                      <p className="text-body-sm text-luxury-gray font-light -mt-2 mb-4">
+                        Tell us about your vision and we will be in touch.
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-5">
+                        <LuxuryInput label="First Name" placeholder="Your first name" required />
+                        <LuxuryInput label="Last Name"  placeholder="Your last name"  required />
+                      </div>
+                      <LuxuryInput label="Email Address" type="email" placeholder="your@email.com" required />
+                      <LuxuryInput label="Phone Number"  type="tel"   placeholder="+1 (000) 000-0000" />
+                      <LuxuryInput label="Service of Interest" as="select">
+                        <option value="">Select a service…</option>
+                        {SERVICES_LIST.map((s) => <option key={s}>{s}</option>)}
+                      </LuxuryInput>
+                      <LuxuryInput label="Your Vision" as="textarea" rows={4}
+                        placeholder="Tell us about your project and what luxury means to you…" />
+
+                      <MagneticButton strength={0.15} className="w-full mt-2">
+                        <button
+                          ref={btnRef}
+                          type="submit"
+                          disabled={loading}
+                          className="btn-luxury-primary w-full justify-center relative overflow-hidden"
+                        >
+                          {loading ? (
+                            <span className="flex items-center gap-3">
+                              <span className="w-3 h-3 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+                              Sending…
+                            </span>
+                          ) : (
+                            <>
+                              Request Private Consultation
+                              <span className="btn-arrow-line" />
+                            </>
+                          )}
+                        </button>
+                      </MagneticButton>
+
+                      <p className="text-[10px] text-luxury-gray/50 text-center font-inter leading-relaxed">
+                        By submitting, you agree to our privacy policy. We never share your information.
+                      </p>
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
