@@ -1,13 +1,41 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { CountUp } from "@/components/ui/CountUp";
+import {
+  GoldRings, DotMatrix, GoldCircle, GoldDiamond, Sparkle,
+  GoldArc, DiagonalLines, GoldCorner,
+} from "@/components/ui/Decorative";
 
 gsap.registerPlugin(ScrollTrigger);
+
+function LuxImg({
+  src, alt, priority = false, className = "",
+}: { src: string; alt: string; priority?: boolean; className?: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <div className={`absolute inset-0 img-shimmer transition-opacity duration-500 ${loaded ? "opacity-0" : "opacity-100"}`} />
+      <Image
+        src={src} alt={alt} fill priority={priority}
+        className={`object-cover img-luxury-load ${loaded ? "loaded" : ""} ${className}`}
+        sizes="(max-width:768px) 100vw, 50vw"
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  );
+}
+
+const STATS = [
+  { to: 20, suffix: "+", label: "Years" },
+  { to: 500, suffix: "+", label: "Spaces" },
+  { to: 98, suffix: "%", label: "Satisfied" },
+  { to: 12, suffix: "+", label: "Awards" },
+];
 
 export function HeroSection() {
   const sectionRef  = useRef<HTMLElement>(null);
@@ -17,115 +45,108 @@ export function HeroSection() {
   const descRef     = useRef<HTMLParagraphElement>(null);
   const ctaRef      = useRef<HTMLDivElement>(null);
   const statsRef    = useRef<HTMLDivElement>(null);
-  const img1Ref     = useRef<HTMLDivElement>(null);
-  const img2Ref     = useRef<HTMLDivElement>(null);
-  const img3Ref     = useRef<HTMLDivElement>(null);
-  const collageRef  = useRef<HTMLDivElement>(null);
+  const colRef      = useRef<HTMLDivElement>(null);
   const scrollRef   = useRef<HTMLDivElement>(null);
 
-  // ── GSAP entrance timeline ─────────────────────────────────
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.2 });
-
-      // Eyebrow + line
-      tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.7, ease: "power3.out" })
-
-      // Headline words
+      const tl = gsap.timeline({ delay: 0.1 });
+      tl.from(eyebrowRef.current,  { opacity: 0, x: -24, duration: 0.7, ease: "power3.out" });
       if (headlineRef.current) {
         const words = headlineRef.current.querySelectorAll(".hw");
-        tl.from(words, {
-          y: "110%",
-          opacity: 0,
-          duration: 0.9,
-          stagger: 0.06,
-          ease: "power3.out",
-        }, "-=0.3");
+        tl.from(words, { y: "110%", opacity: 0, duration: 0.9, stagger: 0.055, ease: "power3.out" }, "-=0.3");
       }
+      tl.from(taglineRef.current, { opacity: 0, y: 12, duration: 0.65, ease: "power2.out" }, "-=0.5");
+      tl.from(descRef.current,    { opacity: 0, y: 14, duration: 0.65, ease: "power2.out" }, "-=0.5");
+      tl.from(ctaRef.current,     { opacity: 0, y: 12, duration: 0.6,  ease: "power2.out" }, "-=0.45");
+      tl.from(statsRef.current,   { opacity: 0, y: 10, duration: 0.6,  ease: "power2.out" }, "-=0.4");
 
-      // Tagline
-      tl.from(taglineRef.current, { opacity: 0, y: 14, duration: 0.7, ease: "power2.out" }, "-=0.5");
-
-      // Description
-      tl.from(descRef.current, { opacity: 0, y: 16, duration: 0.7, ease: "power2.out" }, "-=0.5");
-
-      // CTAs
-      tl.from(ctaRef.current, { opacity: 0, y: 14, duration: 0.6, ease: "power2.out" }, "-=0.45");
-
-      // Stats
-      tl.from(statsRef.current, { opacity: 0, y: 12, duration: 0.6, ease: "power2.out" }, "-=0.4");
-
-      // Images cascade in
-      tl.fromTo(img1Ref.current,
-        { clipPath: "inset(0 100% 0 0)", scale: 1.1 },
-        { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 1.2, ease: "power3.inOut" },
-        "-=0.8"
-      );
-      tl.fromTo(img2Ref.current,
-        { clipPath: "inset(0 100% 0 0)", scale: 1.1 },
-        { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 1.1, ease: "power3.inOut" },
-        "-=0.9"
-      );
-      tl.fromTo(img3Ref.current,
-        { clipPath: "inset(0 100% 0 0)", scale: 1.08 },
-        { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 1.0, ease: "power3.inOut" },
-        "-=0.85"
-      );
-
-      // Scroll indicator
-      tl.from(scrollRef.current, { opacity: 0, y: 8, duration: 0.5 }, "-=0.3");
+      // Stagger collage reveal
+      if (colRef.current) {
+        const panels = colRef.current.querySelectorAll(".hero-panel");
+        tl.fromTo(panels,
+          { clipPath: "inset(0 100% 0 0)", scale: 1.06 },
+          { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 1.1, stagger: 0.1, ease: "power3.inOut" },
+          "-=0.85"
+        );
+      }
+      tl.from(scrollRef.current, { opacity: 0, y: 8, duration: 0.5 }, "-=0.2");
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
-  // ── Mouse parallax on collage ──────────────────────────────
+  // Parallax on mouse move
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       const xPct = (e.clientX / window.innerWidth  - 0.5) * 2;
       const yPct = (e.clientY / window.innerHeight - 0.5) * 2;
-      gsap.to(img1Ref.current, { x: xPct * -16, y: yPct * -10, duration: 0.8, ease: "power2.out" });
-      gsap.to(img2Ref.current, { x: xPct *  12, y: yPct *   8, duration: 0.9, ease: "power2.out" });
-      gsap.to(img3Ref.current, { x: xPct * -24, y: yPct * -18, duration: 0.7, ease: "power2.out" });
+      if (!colRef.current) return;
+      const panels = colRef.current.querySelectorAll<HTMLElement>(".hero-panel");
+      panels.forEach((p, i) => {
+        const depth = (i % 3 + 1) * 6;
+        const sign  = i % 2 === 0 ? -1 : 1;
+        gsap.to(p, { x: xPct * depth * sign, y: yPct * depth * 0.7, duration: 0.9, ease: "power2.out" });
+      });
     };
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-luxury-cream"
-    >
-      {/* Radial background bloom */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 70% 55% at 68% 50%, rgba(244,238,231,0.9), transparent)" }}
-      />
-      {/* Subtle noise texture */}
-      <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")", backgroundSize: "200px" }}
-      />
+    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden bg-luxury-cream">
 
-      <div className="container-luxury w-full pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-16 xl:gap-20 items-center">
+      {/* Soft radial bloom */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse 72% 65% at 62% 48%, rgba(244,238,231,0.92), transparent)" }} />
 
-          {/* ── LEFT COLUMN ─────────────────────────────── */}
-          <div className="relative z-10">
+      {/* Large concentric rings — top left */}
+      <GoldRings size={640} rings={7} opacity={0.07} animate
+        className="absolute -top-24 -left-24 ring-decoration" />
 
-            {/* Eyebrow */}
+      {/* Smaller ring — bottom left */}
+      <GoldCircle size={240} opacity={0.1} dashed
+        className="absolute bottom-12 left-8 ring-decoration" />
+
+      {/* Arc — right edge */}
+      <GoldArc size={340} startAngle={-120} endAngle={60} opacity={0.1}
+        className="absolute -right-16 top-1/3 ring-decoration" />
+
+      {/* Dot grid — bottom right */}
+      <DotMatrix cols={12} rows={9} gap={22}
+        className="absolute bottom-0 right-0 ring-decoration opacity-50" />
+
+      {/* Diagonal sketch lines — top right corner */}
+      <DiagonalLines width={160} height={160} count={8} opacity={0.07}
+        className="absolute top-24 right-40 ring-decoration" />
+
+      {/* Vertical accent line */}
+      <div className="absolute left-[52%] top-0 bottom-0 w-px
+        bg-gradient-to-b from-transparent via-luxury-gold/10 to-transparent
+        pointer-events-none hidden xl:block" />
+
+      <div className="container-luxury w-full pt-32 pb-20 relative z-10">
+        <div className="grid lg:grid-cols-[1fr_1.05fr] gap-10 xl:gap-16 items-center">
+
+          {/* ── LEFT ── */}
+          <div className="relative z-10 order-2 lg:order-1">
             <div ref={eyebrowRef} className="flex items-center gap-4 mb-8">
               <div className="w-12 h-px bg-luxury-gold" />
               <span className="eyebrow">Luxury Interior Design Studio · Est. 2004</span>
+              <GoldDiamond size={8} opacity={0.5} />
             </div>
 
-            {/* Headline — word-by-word overflow clip */}
             <h1
               ref={headlineRef}
-              className="font-cormorant font-light leading-[1.05] tracking-[-0.02em] text-luxury-black mb-6"
-              style={{ fontSize: "clamp(52px, 6vw, 96px)" }}
+              className="font-cormorant font-light leading-[1.04] tracking-[-0.025em] text-luxury-black mb-5"
+              style={{ fontSize: "clamp(48px,5.5vw,92px)" }}
             >
-              {["Designing", "Spaces", "That", "Define"].map((w) => (
+              {["Designing", "Spaces"].map((w) => (
+                <span key={w} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.22em" }}>
+                  <span className="hw" style={{ display: "inline-block" }}>{w}</span>
+                </span>
+              ))}
+              <br />
+              {["That", "Define"].map((w) => (
                 <span key={w} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.22em" }}>
                   <span className="hw" style={{ display: "inline-block" }}>{w}</span>
                 </span>
@@ -138,52 +159,33 @@ export function HeroSection() {
               </span>
             </h1>
 
-            {/* Tagline */}
-            <p
-              ref={taglineRef}
-              className="font-cormorant italic text-luxury-gold mb-6"
-              style={{ fontSize: "clamp(20px, 2vw, 28px)" }}
-            >
+            <p ref={taglineRef} className="font-cormorant italic text-luxury-gold mb-5"
+              style={{ fontSize: "clamp(18px,1.9vw,26px)" }}>
               "Dare To Have Flair"
             </p>
 
-            {/* Description */}
-            <p
-              ref={descRef}
-              className="text-body-lg text-luxury-gray max-w-[460px] mb-10 font-light leading-relaxed"
-            >
+            <p ref={descRef} className="text-body-lg text-luxury-gray max-w-[460px] mb-10 font-light leading-relaxed">
               We transform interiors and events into extraordinary luxury experiences.
               From bespoke furniture curation to full event styling — every detail
               speaks of uncompromising craftsmanship.
             </p>
 
-            {/* CTAs */}
             <div ref={ctaRef} className="flex flex-wrap gap-4">
               <MagneticButton strength={0.25}>
                 <Link href="/contact" className="btn-luxury-primary">
-                  Book Consultation
-                  <span className="btn-arrow-line" />
+                  Book Consultation<span className="btn-arrow-line" />
                 </Link>
               </MagneticButton>
               <MagneticButton strength={0.2}>
                 <Link href="/portfolio" className="btn-luxury-outline">
-                  View Portfolio
-                  <span className="btn-arrow-line" />
+                  View Portfolio<span className="btn-arrow-line" />
                 </Link>
               </MagneticButton>
             </div>
 
-            {/* Stats */}
-            <div
-              ref={statsRef}
-              className="flex gap-10 mt-14 pt-10 border-t border-luxury-gold/15"
-            >
-              {[
-                { to: 20,  suffix: "+", label: "Years"     },
-                { to: 500, suffix: "+", label: "Spaces"    },
-                { to: 98,  suffix: "%", label: "Satisfied" },
-              ].map(({ to, suffix, label }) => (
-                <div key={label}>
+            <div ref={statsRef} className="flex flex-wrap gap-8 mt-14 pt-10 border-t border-luxury-gold/15">
+              {STATS.map(({ to, suffix, label }) => (
+                <div key={label} className="text-center sm:text-left">
                   <div className="font-cormorant text-4xl font-light text-luxury-black">
                     <CountUp to={to} suffix={suffix} />
                   </div>
@@ -193,76 +195,79 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* ── RIGHT COLUMN — Photography collage ───────── */}
-          <div
-            ref={collageRef}
-            className="relative h-[600px] lg:h-[700px] hidden lg:block"
-          >
-            {/* Main large image */}
-            <div
-              ref={img1Ref}
-              className="absolute top-0 right-0 w-[65%] h-[72%] overflow-hidden shadow-luxury-lg border-[5px] border-white will-change-transform"
-              style={{ clipPath: "inset(0 100% 0 0)" }}
-            >
-              <div className="w-full h-[115%] absolute -top-[7.5%] left-0 transition-transform duration-[900ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.04]">
-                <Image src="/images/BW8A3410.jpg" alt="Luxury dining room with crystal chandelier by Eleganté" fill className="object-cover" sizes="(max-width:1024px) 0vw, 42vw" priority />
-              </div>
+          {/* ── RIGHT — 5-image cinematic collage ── */}
+          <div ref={colRef} className="relative h-[680px] lg:h-[780px] order-1 lg:order-2 hidden sm:block">
+
+            {/* Main large — top-right */}
+            <div className="hero-panel absolute top-0 right-0 w-[63%] h-[55%] overflow-hidden
+              shadow-luxury-lg border-[5px] border-white will-change-transform img-frame"
+              style={{ clipPath: "inset(0 100% 0 0)" }}>
+              <LuxImg src="/images/BW8A3646.jpg" alt="Eleganté luxury reception" priority />
             </div>
 
-            {/* Bottom-left image */}
-            <div
-              ref={img2Ref}
-              className="absolute bottom-0 left-0 w-[55%] h-[58%] overflow-hidden shadow-luxury-lg border-[5px] border-white will-change-transform"
-              style={{ clipPath: "inset(0 100% 0 0)" }}
-            >
-              <div className="w-full h-[115%] absolute -top-[7.5%] left-0 transition-transform duration-[900ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.04]">
-                <Image src="/images/BW8A3694.jpg" alt="Luxury ivory living room by Eleganté" fill className="object-cover" sizes="(max-width:1024px) 0vw, 36vw" />
-              </div>
+            {/* Mid-left tall */}
+            <div className="hero-panel absolute top-[8%] left-0 w-[44%] h-[60%] overflow-hidden
+              shadow-luxury-lg border-[5px] border-white will-change-transform img-frame"
+              style={{ clipPath: "inset(0 100% 0 0)" }}>
+              <LuxImg src="/images/BW8A3842.jpg" alt="Luxury living space" priority />
             </div>
 
-            {/* Accent image */}
-            <div
-              ref={img3Ref}
-              className="absolute top-[40%] right-[2%] w-[30%] h-[34%] overflow-hidden shadow-luxury border-[4px] border-white z-10 will-change-transform"
-              style={{ clipPath: "inset(0 100% 0 0)" }}
-            >
-              <div className="w-full h-[115%] absolute -top-[7.5%] left-0 transition-transform duration-[900ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:scale-[1.05]">
-                <Image src="/images/BW8A3607.jpg" alt="Eleganté Design Studio brand card" fill className="object-cover" sizes="(max-width:1024px) 0vw, 20vw" />
-              </div>
+            {/* Bottom-right */}
+            <div className="hero-panel absolute bottom-0 right-0 w-[54%] h-[42%] overflow-hidden
+              shadow-luxury-lg border-[5px] border-white will-change-transform img-frame"
+              style={{ clipPath: "inset(0 100% 0 0)" }}>
+              <LuxImg src="/images/BW8A3837.jpg" alt="Event styling" />
             </div>
+
+            {/* Accent center */}
+            <div className="hero-panel absolute top-[38%] left-[37%] w-[24%] h-[28%] overflow-hidden
+              shadow-luxury border-[4px] border-white z-10 will-change-transform"
+              style={{ clipPath: "inset(0 100% 0 0)" }}>
+              <LuxImg src="/images/BW8A3507.jpg" alt="Interior detail" />
+            </div>
+
+            {/* Small bottom-left accent */}
+            <div className="hero-panel absolute bottom-[3%] left-[4%] w-[32%] h-[30%] overflow-hidden
+              shadow-luxury border-[4px] border-white z-10 will-change-transform"
+              style={{ clipPath: "inset(0 100% 0 0)" }}>
+              <LuxImg src="/images/BW8A3853.jpg" alt="Floral decor detail" />
+            </div>
+
+            {/* Corner bracket decorations */}
+            <GoldCorner size={36} opacity={0.35}
+              className="absolute top-[-4px] left-[-4px] ring-decoration" />
+            <GoldCorner size={36} opacity={0.35}
+              className="absolute bottom-[-4px] right-[-4px] ring-decoration rotate-180" />
 
             {/* Rotating badge */}
-            <div className="absolute bottom-[18%] right-[-32px] w-28 h-28 z-20 animate-spin-slow" aria-hidden="true">
+            <div className="absolute bottom-[20%] right-[-28px] w-28 h-28 z-20 animate-spin-slow" aria-hidden="true">
               <svg viewBox="0 0 120 120" className="w-full h-full">
-                <path id="bp" fill="none" d="M60,60 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" />
+                <path id="bp2" fill="none" d="M60,60 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" />
                 <text fill="#D61F69" fontSize="9" fontFamily="Inter" letterSpacing="3.5">
-                  <textPath href="#bp">DARE TO HAVE FLAIR · ELEGANTÉ ·</textPath>
+                  <textPath href="#bp2">DARE TO HAVE FLAIR · ELEGANTÉ ·</textPath>
                 </text>
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-cormorant text-xl text-luxury-pink animate-float">✦</span>
+                <Sparkle size="text-xl" />
               </div>
             </div>
 
-            {/* Vertical gold accent */}
-            <div className="absolute top-[24%] left-[-20px] w-px h-44 bg-gradient-to-b from-transparent via-luxury-gold/40 to-transparent" />
-            {/* Horizontal gold accent */}
-            <div className="absolute top-0 right-[35%] h-px w-24 bg-gradient-to-r from-transparent via-luxury-gold/30 to-transparent" />
+            {/* Decorative circle behind collage */}
+            <GoldCircle size={220} opacity={0.1} dashed
+              className="absolute -bottom-10 -left-10 ring-decoration" />
+            <div className="absolute top-[20%] left-[-20px] w-px h-48
+              bg-gradient-to-b from-transparent via-luxury-gold/40 to-transparent ring-decoration" />
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div
-        ref={scrollRef}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-      >
+      <div ref={scrollRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
         <span className="eyebrow text-[9px] tracking-[0.3em]">Scroll to Explore</span>
         <div className="relative w-px h-12 overflow-hidden">
           <div className="absolute inset-x-0 bg-gradient-to-b from-luxury-gold to-transparent scroll-line-animate" />
         </div>
       </div>
-
     </section>
   );
 }
