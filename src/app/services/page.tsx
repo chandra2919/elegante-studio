@@ -28,7 +28,7 @@ export default function ServicesPage() {
             <em className="italic text-luxury-gold font-light">Luxury Services</em>
           </h1>
           <p className="text-body-lg text-white/55 max-w-xl font-light">
-            From intimate residential redesigns to grand event transformations — every service delivered with absolute precision.
+            From intimate residential redesigns to grand interior transformations — every service delivered with absolute precision.
           </p>
         </div>
       </section>

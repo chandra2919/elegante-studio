@@ -9,7 +9,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 const SERVICES_LIST = [
   "Interior Design — Residential",
   "Interior Design — Commercial",
-  "Event Styling",
+  "Styling Services",
   "Furniture Curation",
   "Window Treatments & Drapery",
   "Floral Installations",

@@ -24,7 +24,7 @@ const ALL_IMAGES = [
   { src: "/images/BW8A3604.webp", title: "Decor Vignette",           cat: "decor"      },
   { src: "/images/BW8A3646.webp", title: "Room Styling",             cat: "interiors"  },
   { src: "/images/BW8A3656.webp", title: "Furniture Collection",     cat: "furniture"  },
-  { src: "/images/BW8A3725.webp", title: "Event Styling",            cat: "events"     },
+  { src: "/images/BW8A3725.webp", title: "Styling Services",            cat: "events"     },
   { src: "/images/BW8A3784.webp", title: "Luxury Living",            cat: "interiors"  },
   { src: "/images/BW8A3836.webp", title: "Artisan Object",           cat: "decor"      },
   { src: "/images/BW8A3853.webp", title: "Gold Detail",              cat: "decor"      },

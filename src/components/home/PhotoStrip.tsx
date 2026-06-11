@@ -76,7 +76,7 @@ export function PhotoStrip() {
       <div className="flex items-center justify-center gap-6 py-16">
         <div className="h-px w-20 bg-gradient-to-r from-transparent to-luxury-gold/50" />
         <GoldDiamond size={10} opacity={0.4} />
-        <span className="eyebrow text-luxury-gold/70 text-[8px]">Eleganté Interiors & Events</span>
+        <span className="eyebrow text-luxury-gold/70 text-[8px]">Eleganté Interiors</span>
         <GoldDiamond size={10} opacity={0.4} />
         <div className="h-px w-20 bg-gradient-to-l from-transparent to-luxury-gold/50" />
       </div>

@@ -98,7 +98,7 @@ export function Navbar() {
                 Eleg<em className="italic">anté</em>
               </span>
               <span className="eyebrow text-[7px] tracking-[0.32em] text-luxury-gold leading-none">
-                Interiors &amp; Events
+                Interiors
               </span>
             </div>
           </Link>

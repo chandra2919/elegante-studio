@@ -158,7 +158,7 @@ export function ServicesOverview() {
         <SectionHeader
           eyebrow="What We Offer"
           title={<>A Suite of <em className="italic text-luxury-pink">Luxury</em> Services</>}
-          subtitle="From intimate residential redesigns to grand event transformations — we curate every experience to exceed expectation."
+          subtitle="From intimate residential redesigns to grand interior transformations — we curate every experience to exceed expectation."
           className="mb-16"
         />
 

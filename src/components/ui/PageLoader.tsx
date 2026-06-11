@@ -62,7 +62,7 @@ export function PageLoader() {
             Eleg<em className="italic text-[#C8A86B]">anté</em>
           </div>
           <div style={{ fontFamily: "Inter, sans-serif" }} className="text-[9px] tracking-[0.35em] uppercase text-[#C8A86B]/70 mt-3">
-            Interiors &amp; Events
+            Interiors
           </div>
         </div>
       </div>

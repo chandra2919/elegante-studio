@@ -31,8 +31,8 @@ const MILESTONES = [
   },
   {
     year: "2012",
-    title: "Events Division",
-    event: "Events division launched — full event styling capability",
+    title: "Styling Division",
+    event: "Styling division launched — full interior styling capability",
     detail: "Expanding beyond interiors to transform celebrations and ceremonies into unforgettable experiences.",
     image: "/images/BW8A3877.webp",
   },

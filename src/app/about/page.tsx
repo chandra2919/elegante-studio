@@ -9,7 +9,7 @@ import { JourneyTimeline } from "@/components/about/JourneyTimeline";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "The story of Eleganté Interiors & Events — 20+ years crafting Michigan's most extraordinary spaces.",
+  description: "The story of Eleganté Interiors — 20+ years crafting Michigan's most extraordinary spaces.",
 };
 
 const MILESTONES = [

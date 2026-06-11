@@ -35,7 +35,7 @@ const VALUES = [
 
 const MILESTONES = [
   { year: "2004", text: "Eleganté founded in Michigan" },
-  { year: "2009", text: "First international event in Dubai" },
+  { year: "2009", text: "First international project in Dubai" },
   { year: "2015", text: "100th luxury residence completed" },
   { year: "2022", text: "Recognised — Top 10 Luxury Studios, USA" },
 ];
@@ -171,7 +171,7 @@ export function StudioIntro() {
             </p>
 
             <p className="text-body-md text-luxury-gray leading-relaxed mb-5 font-light">
-              Eleganté Interiors & Events was born from a singular belief: that every space
+              Eleganté Interiors was born from a singular belief: that every space
               deserves to be extraordinary. Founded with a passion for the opulent and
               beautifully crafted, we've spent over two decades redefining luxury.
             </p>

@@ -1,6 +1,6 @@
 export function MarqueeStrip() {
   const items = [
-    "Luxury Interiors", "Event Styling", "Furniture Curation",
+    "Luxury Interiors", "Styling Services", "Furniture Curation",
     "Dare To Have Flair", "Premium Decor", "Chandelier Installations",
     "Floral Artistry", "Eleganté Design Studio",
   ];

@@ -39,7 +39,7 @@ export function Footer() {
               </div>
               <div>
                 <div className="font-cormorant text-xl text-white">Eleganté</div>
-                <div className="eyebrow text-[8px] text-luxury-gold">Interiors &amp; Events</div>
+                <div className="eyebrow text-[8px] text-luxury-gold">Interiors</div>
               </div>
             </Link>
             <p className="font-cormorant text-lg italic text-luxury-gold mb-4">
@@ -119,7 +119,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[11px] font-inter text-white/20 tracking-wide">
-            © {new Date().getFullYear()} Eleganté Interiors & Events. All rights reserved.
+            © {new Date().getFullYear()} Eleganté Interiors. All rights reserved.
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Sitemap"].map((item) => (

@@ -27,7 +27,7 @@ async function sendEmailNotification(submission: Submission) {
       <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#faf9f7;border:1px solid #e8d5a3;">
         <!-- Header -->
         <div style="background:#1a1a1a;padding:32px 40px;text-align:center;">
-          <p style="color:#c8a86b;letter-spacing:4px;font-size:11px;margin:0 0 8px;">ELEGANTÉ INTERIORS & EVENTS</p>
+          <p style="color:#c8a86b;letter-spacing:4px;font-size:11px;margin:0 0 8px;">ELEGANTÉ INTERIORS</p>
           <h1 style="color:#ffffff;font-weight:300;font-size:26px;margin:0;">New Enquiry Received</h1>
         </div>
 
@@ -85,7 +85,7 @@ async function sendEmailNotification(submission: Submission) {
         <!-- Footer -->
         <div style="padding:20px 40px;background:#f5f0e8;border-top:1px solid #e8d5a3;text-align:center;">
           <p style="color:#999;font-size:11px;margin:0;">
-            Eleganté Interiors & Events · 1046 S Telegraph Rd, Pontiac, MI
+            Eleganté Interiors · 1046 S Telegraph Rd, Pontiac, MI
           </p>
         </div>
       </div>

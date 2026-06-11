@@ -8,7 +8,7 @@ export function LocalBusinessJsonLd() {
     "@context": "https://schema.org",
     "@type": "InteriorDesigner",
     "@id": "https://www.elegante-studio.com/#business",
-    name: "Eleganté Interiors & Events",
+    name: "Eleganté Interiors",
     alternateName: "Eleganté Design Studio",
     description:
       "Michigan's premier luxury interior design studio. Bespoke residential design, event styling, furniture curation, and floral installations. Est. 2004.",

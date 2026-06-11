@@ -204,7 +204,7 @@ export function HeroSection() {
             className="text-luxury-gray max-w-[400px] mb-10 font-light leading-[1.75]"
             style={{ fontSize: 15 }}>
             We transform interiors and events into extraordinary luxury experiences.
-            From bespoke furniture curation to full event styling — every detail
+            From bespoke furniture curation to full interior styling — every detail
             speaks of uncompromising craftsmanship.
           </p>
 

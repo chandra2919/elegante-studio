@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.elegante-studio.com"),
   title: {
-    default: "Eleganté Interiors & Events | Luxury Design Studio",
+    default: "Eleganté Interiors | Luxury Design Studio",
     template: "%s | Eleganté Design Studio",
   },
   description:
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     "bespoke interior design",
     "high-end interior designer",
   ],
-  authors: [{ name: "Eleganté Interiors & Events" }],
+  authors: [{ name: "Eleganté Interiors" }],
   creator: "Eleganté Design Studio",
-  publisher: "Eleganté Interiors & Events",
+  publisher: "Eleganté Interiors",
   robots: {
     index: true,
     follow: true,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Eleganté Interiors & Events | Luxury Design Studio",
+    title: "Eleganté Interiors | Luxury Design Studio",
     description: "Dare to have flair. Michigan's premier luxury interior design studio.",
     url: "https://www.elegante-studio.com",
     siteName: "Eleganté Design Studio",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eleganté Interiors & Events",
+    title: "Eleganté Interiors",
     description: "Dare to have flair. Michigan's premier luxury interior design studio.",
     images: ["/images/BW8A3410.webp"],
   },
