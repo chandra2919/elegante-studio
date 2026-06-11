@@ -99,18 +99,20 @@ export default function ServicesPage() {
                 {/* Top gold bar — slides in on hover */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
-                {/* Step number watermark */}
-                <div
-                  className="absolute -right-3 -top-4 font-cormorant font-light leading-none select-none pointer-events-none transition-all duration-500 group-hover:text-luxury-gold/10"
-                  style={{ fontSize: "clamp(80px,10vw,120px)", color: "rgba(200,168,107,0.04)" }}
-                >
-                  {String(step.step).padStart(2, "0")}
+                {/* Decorative concentric circles — top right corner */}
+                <div className="absolute -top-6 -right-6 pointer-events-none select-none">
+                  <div className="w-24 h-24 rounded-full border border-luxury-gold/8 group-hover:border-luxury-gold/20 transition-colors duration-500" />
+                  <div className="absolute inset-3 rounded-full border border-luxury-gold/6 group-hover:border-luxury-gold/15 transition-colors duration-500" />
+                  <div className="absolute inset-6 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/12 transition-colors duration-500" />
+                  <div className="absolute inset-9 rounded-full bg-luxury-gold/0 group-hover:bg-luxury-gold/8 transition-colors duration-500" />
                 </div>
 
                 {/* Step indicator */}
                 <div className="flex items-center gap-3 mb-7">
-                  <div className="w-8 h-8 border border-luxury-gold/30 group-hover:border-luxury-gold group-hover:bg-luxury-gold/10 flex items-center justify-center transition-all duration-400">
-                    <span className="font-inter text-[10px] tracking-widest text-luxury-gold/60 group-hover:text-luxury-gold transition-colors duration-400">
+                  <div className="relative w-8 h-8 flex items-center justify-center flex-shrink-0">
+                    <div className="absolute inset-0 rounded-full border border-luxury-gold/30 group-hover:border-luxury-gold/70 transition-colors duration-400" />
+                    <div className="absolute inset-0 rounded-full bg-luxury-gold/0 group-hover:bg-luxury-gold/10 transition-colors duration-400" />
+                    <span className="font-inter text-[10px] tracking-widest text-luxury-gold/60 group-hover:text-luxury-gold transition-colors duration-400 relative z-10">
                       {String(step.step).padStart(2, "0")}
                     </span>
                   </div>
@@ -127,8 +129,9 @@ export default function ServicesPage() {
                   {step.description}
                 </p>
 
-                {/* Bottom corner accent */}
-                <div className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/40 transition-all duration-400" />
+                {/* Bottom corner brackets */}
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
 
                 {/* Connector dot for flow */}
                 {i < PROCESS_STEPS.length - 1 && (
