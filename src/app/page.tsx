@@ -11,7 +11,6 @@ const HeroSection = dynamic(
 // Heavy sections — dynamically imported so they don't block initial paint
 const GalleryWall        = dynamic(() => import("@/components/home/GalleryWall").then(m => ({ default: m.GalleryWall })),        { ssr: false });
 const StudioIntro        = dynamic(() => import("@/components/home/StudioIntro").then(m => ({ default: m.StudioIntro })));
-const CraftDetails       = dynamic(() => import("@/components/home/CraftDetails").then(m => ({ default: m.CraftDetails })),      { ssr: false });
 const ServicesOverview   = dynamic(() => import("@/components/home/ServicesOverview").then(m => ({ default: m.ServicesOverview })));
 const TestimonialsSection= dynamic(() => import("@/components/home/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })));
 const InstagramShowcase  = dynamic(() => import("@/components/home/InstagramShowcase").then(m => ({ default: m.InstagramShowcase })));
@@ -27,7 +26,6 @@ export default function HomePage() {
       {/* Below-fold — lazy loaded */}
       <GalleryWall />
       <StudioIntro />
-      <CraftDetails />
       <ServicesOverview />
       <TestimonialsSection />
       <InstagramShowcase />

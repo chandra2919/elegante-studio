@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PhotoStrip } from "@/components/home/PhotoStrip";
+import { CraftDetails } from "@/components/home/CraftDetails";
 
 const ALL_IMAGES = [
   { src: "/images/BW8A3410.webp", title: "Grand Dining Suite",       cat: "interiors"  },
@@ -168,6 +169,9 @@ export default function GalleryPage() {
           </AnimatePresence>
         </div>
       </section>
+
+      {/* Art of Detail section */}
+      <CraftDetails />
 
       {/* Lightbox */}
       <AnimatePresence>
