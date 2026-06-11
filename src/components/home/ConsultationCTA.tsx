@@ -7,13 +7,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function ConsultationCTA() {
   const imgRef  = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // Parallax on the background image
       if (imgRef.current) {
@@ -36,7 +35,7 @@ export function ConsultationCTA() {
     <section className="relative overflow-hidden flex items-center justify-center" style={{ minHeight: "580px" }}>
       {/* Parallax image */}
       <div ref={imgRef} className="absolute inset-0 will-change-transform" style={{ top: "-15%", bottom: "-15%" }}>
-        <Image src="/images/BW8A3472.jpg" alt="Crystal Chandelier" fill className="object-cover" />
+        <Image src="/images/BW8A3472.webp" alt="Crystal Chandelier" fill className="object-cover" />
       </div>
 
       {/* Overlays */}

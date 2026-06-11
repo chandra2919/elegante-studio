@@ -9,18 +9,18 @@ import {
 } from "@/components/ui/Decorative";
 
 const DETAILS = [
-  { src: "/images/IMG_9329.jpg", alt: "Floral detail — white roses"       },
-  { src: "/images/IMG_9334.jpg", alt: "Centrepiece arrangement"           },
-  { src: "/images/IMG_9339.jpg", alt: "Table candle styling"              },
-  { src: "/images/IMG_9346.jpg", alt: "Gold accent accessories"           },
-  { src: "/images/IMG_9352.jpg", alt: "Linen and crystal table setup"     },
-  { src: "/images/IMG_9355.jpg", alt: "Floral wall backdrop detail"       },
-  { src: "/images/IMG_9362.jpg", alt: "Luxury place setting"              },
-  { src: "/images/IMG_9370.jpg", alt: "Chair ribbon styling"              },
-  { src: "/images/IMG_9378.jpg", alt: "Hanging floral accent"             },
-  { src: "/images/IMG_9380.jpg", alt: "Candelabra detail"                 },
-  { src: "/images/IMG_9385.jpg", alt: "Custom stationery and decor"       },
-  { src: "/images/IMG_9398.jpg", alt: "Event lighting ambiance"           },
+  { src: "/images/IMG_9329.webp", alt: "Floral detail — white roses"       },
+  { src: "/images/IMG_9334.webp", alt: "Centrepiece arrangement"           },
+  { src: "/images/IMG_9339.webp", alt: "Table candle styling"              },
+  { src: "/images/IMG_9346.webp", alt: "Gold accent accessories"           },
+  { src: "/images/IMG_9352.webp", alt: "Linen and crystal table setup"     },
+  { src: "/images/IMG_9355.webp", alt: "Floral wall backdrop detail"       },
+  { src: "/images/IMG_9362.webp", alt: "Luxury place setting"              },
+  { src: "/images/IMG_9370.webp", alt: "Chair ribbon styling"              },
+  { src: "/images/IMG_9378.webp", alt: "Hanging floral accent"             },
+  { src: "/images/IMG_9380.webp", alt: "Candelabra detail"                 },
+  { src: "/images/IMG_9385.webp", alt: "Custom stationery and decor"       },
+  { src: "/images/IMG_9398.webp", alt: "Event lighting ambiance"           },
 ];
 
 const HEIGHTS = [280, 340, 300, 260, 320, 280, 360, 280, 300, 340, 280, 320];

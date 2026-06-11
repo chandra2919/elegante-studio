@@ -62,3 +62,8 @@ next-env.d.ts
 # ──────────────────────────────────────────────
 coverage/
 .nyc_output/
+service-account.json
+
+# Google service account credentials
+service-account.json
+elegant-studio-*.json

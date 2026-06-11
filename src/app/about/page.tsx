@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { GoldDivider } from "@/components/ui/GoldDivider";
 import { STATS, PROCESS_STEPS, TESTIMONIALS } from "@/lib/data";
 import { ConsultationCTA } from "@/components/home/ConsultationCTA";
+import { JourneyTimeline } from "@/components/about/JourneyTimeline";
 
 export const metadata: Metadata = {
   title: "About",
@@ -39,7 +40,7 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-end pb-24 overflow-hidden">
-        <Image src="/images/BW8A3535.jpg" alt="Studio" fill className="object-cover" priority />
+        <Image src="/images/BW8A3535.webp" alt="Studio" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-luxury-black/65" />
         <div className="container-luxury relative z-10">
           <div className="flex items-center gap-4 mb-6">
@@ -84,9 +85,9 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="relative h-[600px]">
-              <Image src="/images/BW8A3383.jpg" alt="Eleganté Studio" fill className="object-cover shadow-luxury-lg" />
+              <Image src="/images/BW8A3383.webp" alt="Eleganté Studio" fill className="object-cover shadow-luxury-lg" />
               <div className="absolute -bottom-6 -right-6 w-44 h-44 overflow-hidden border-4 border-luxury-cream shadow-luxury z-10">
-                <Image src="/images/BW8A3607.jpg" alt="Studio Detail" fill className="object-cover" />
+                <Image src="/images/BW8A3607.webp" alt="Studio Detail" fill className="object-cover" />
               </div>
             </div>
           </div>
@@ -143,43 +144,109 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Milestones */}
-      <section className="section-pad bg-luxury-black">
-        <div className="container-luxury">
-          <SectionHeader eyebrow="Our Journey" title={<>Two Decades of <em className="italic text-luxury-gold font-light">Excellence</em></>} light className="mb-16" />
-          <div className="relative">
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-luxury-gold/20 hidden lg:block" />
-            <div className="flex flex-col gap-12">
-              {MILESTONES.map(({ year, event }, i) => (
-                <div key={year} className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}>
-                  <div className={`${i % 2 === 1 ? "lg:text-right lg:order-2" : ""}`}>
-                    <div className="font-cormorant text-5xl text-luxury-gold/30 font-light mb-2">{year}</div>
-                    <p className="text-body-md text-white/60 font-light">{event}</p>
-                  </div>
-                  <div className={`hidden lg:flex items-center justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <div className="w-3 h-3 rounded-full bg-luxury-gold border-4 border-luxury-black ring-1 ring-luxury-gold/40" />
-                  </div>
-                </div>
-              ))}
+      {/* Milestones — Premium Animated Timeline */}
+      <JourneyTimeline />
+
+      {/* FAQ — Premium Accordion */}
+      <section className="section-pad bg-luxury-cream relative overflow-hidden">
+        {/* Decorative watermark */}
+        <div
+          aria-hidden="true"
+          className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none font-cormorant font-light leading-none"
+          style={{
+            fontSize: "clamp(100px,18vw,240px)",
+            color: "rgba(200,168,107,0.04)",
+            letterSpacing: "-0.04em",
+            transform: "translateX(10%) translateY(-50%)",
+          }}
+        >
+          Questions
+        </div>
+
+        <div className="container-md relative z-10">
+          {/* Header */}
+          <div className="grid lg:grid-cols-2 gap-16 items-end mb-16">
+            <div>
+              <div className="flex items-center gap-4 mb-5">
+                <span className="w-10 h-px bg-luxury-gold" />
+                <span className="eyebrow">FAQ</span>
+              </div>
+              <h2
+                className="font-cormorant font-light text-luxury-black leading-[1.06]"
+                style={{ fontSize: "clamp(36px,4.2vw,62px)" }}
+              >
+                Common{" "}
+                <em className="italic text-luxury-pink font-light">Questions</em>
+              </h2>
+            </div>
+            <div>
+              <p className="text-body-md text-luxury-gray font-light leading-relaxed">
+                Everything you need to know before beginning your Eleganté journey.
+                If you don't find your answer below, we welcome a private conversation.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* FAQ */}
-      <section className="section-pad bg-luxury-warm">
-        <div className="container-md">
-          <SectionHeader eyebrow="FAQ" title={<>Common <em className="italic text-luxury-pink font-light">Questions</em></>} className="mb-14" />
-          <div className="flex flex-col gap-px bg-luxury-gold/10">
-            {FAQS.map(({ q, a }) => (
-              <details key={q} className="group bg-luxury-warm p-8 cursor-pointer">
-                <summary className="flex items-center justify-between font-cormorant text-xl text-luxury-black font-light list-none">
-                  {q}
-                  <span className="text-luxury-gold text-xl ml-4 group-open:rotate-45 transition-transform duration-300 flex-shrink-0">+</span>
+          {/* Accordion rows */}
+          <div className="flex flex-col divide-y divide-luxury-gold/15">
+            {FAQS.map(({ q, a }, idx) => (
+              <details
+                key={q}
+                className="group py-0"
+              >
+                <summary className="flex items-start justify-between gap-8 py-8 cursor-pointer list-none select-none">
+                  {/* Number + Question */}
+                  <div className="flex items-start gap-6 flex-1">
+                    <span
+                      className="font-cormorant font-light text-luxury-gold/30 group-open:text-luxury-gold/70 transition-colors duration-400 flex-shrink-0 leading-none mt-1"
+                      style={{ fontSize: "22px" }}
+                    >
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-cormorant text-[22px] font-light text-luxury-black group-open:text-luxury-black leading-snug">
+                      {q}
+                    </span>
+                  </div>
+
+                  {/* Toggle icon — rotates to × */}
+                  <div className="flex-shrink-0 mt-1 w-8 h-8 border border-luxury-gold/25 group-open:border-luxury-gold/60 flex items-center justify-center transition-all duration-400">
+                    <svg
+                      className="text-luxury-gold/50 group-open:text-luxury-gold transition-colors duration-400"
+                      width="12" height="12" viewBox="0 0 12 12"
+                    >
+                      <line
+                        x1="6" y1="1" x2="6" y2="11"
+                        stroke="currentColor" strokeWidth="1"
+                        className="transition-all duration-400 group-open:opacity-0"
+                      />
+                      <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" strokeWidth="1" />
+                    </svg>
+                  </div>
                 </summary>
-                <p className="text-body-md text-luxury-gray mt-5 leading-relaxed font-light">{a}</p>
+
+                {/* Answer */}
+                <div className="pb-8 pl-[52px] pr-12">
+                  <div className="w-8 h-px bg-luxury-gold/30 mb-5" />
+                  <p className="text-body-md text-luxury-gray font-light leading-relaxed max-w-2xl">
+                    {a}
+                  </p>
+                </div>
               </details>
             ))}
+          </div>
+
+          {/* Bottom CTA row */}
+          <div className="mt-14 pt-10 border-t border-luxury-gold/15 flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
+            <p className="font-cormorant text-xl italic text-luxury-gray font-light">
+              Still have a question? We'd love to hear from you.
+            </p>
+            <a
+              href="/contact"
+              className="btn-luxury-outline flex-shrink-0"
+            >
+              Get in Touch
+              <span className="btn-arrow-line" />
+            </a>
           </div>
         </div>
       </section>

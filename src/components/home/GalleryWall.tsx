@@ -28,30 +28,30 @@ function GalleryImg({
 // Each cell: { src, alt, colSpan, rowSpan, tall? }
 const GRID: Array<{ src: string; alt: string; col: string; row: string }> = [
   // Row 1 — wide hero
-  { src: "/images/BW8A3578.jpg",  alt: "Luxury event draping",        col: "col-span-8",  row: "row-span-5" },
-  { src: "/images/BW8A3395.jpg",  alt: "Reception hall centrepiece",  col: "col-span-4",  row: "row-span-3" },
+  { src: "/images/BW8A3578.webp",  alt: "Luxury event draping",        col: "col-span-8",  row: "row-span-5" },
+  { src: "/images/BW8A3395.webp",  alt: "Reception hall centrepiece",  col: "col-span-4",  row: "row-span-3" },
   // Row 1 right bottom
-  { src: "/images/BW8A3383.jpg",  alt: "Floral arrangement",          col: "col-span-4",  row: "row-span-2" },
+  { src: "/images/BW8A3383.webp",  alt: "Floral arrangement",          col: "col-span-4",  row: "row-span-2" },
   // Row 2
-  { src: "/images/BW8A3452.jpg",  alt: "Table styling detail",        col: "col-span-3",  row: "row-span-3" },
-  { src: "/images/BW8A3487.jpg",  alt: "Event lighting setup",        col: "col-span-3",  row: "row-span-3" },
-  { src: "/images/BW8A3420.jpg",  alt: "Reception arch decor",        col: "col-span-6",  row: "row-span-3" },
+  { src: "/images/BW8A3452.webp",  alt: "Table styling detail",        col: "col-span-3",  row: "row-span-3" },
+  { src: "/images/BW8A3487.webp",  alt: "Event lighting setup",        col: "col-span-3",  row: "row-span-3" },
+  { src: "/images/BW8A3420.webp",  alt: "Reception arch decor",        col: "col-span-6",  row: "row-span-3" },
   // Row 3
-  { src: "/images/BW8A3437.jpg",  alt: "Hanging floral installation", col: "col-span-4",  row: "row-span-4" },
-  { src: "/images/BW8A3494.jpg",  alt: "Gold candelabra detail",      col: "col-span-4",  row: "row-span-2" },
-  { src: "/images/BW8A3535.jpg",  alt: "Luxury table arrangement",    col: "col-span-4",  row: "row-span-2" },
+  { src: "/images/BW8A3437.webp",  alt: "Hanging floral installation", col: "col-span-4",  row: "row-span-4" },
+  { src: "/images/BW8A3494.webp",  alt: "Gold candelabra detail",      col: "col-span-4",  row: "row-span-2" },
+  { src: "/images/BW8A3535.webp",  alt: "Luxury table arrangement",    col: "col-span-4",  row: "row-span-2" },
   // Row 3 bottom
-  { src: "/images/BW8A3472.jpg",  alt: "Venue transformation",        col: "col-span-4",  row: "row-span-2" },
-  { src: "/images/BW8A3490.jpg",  alt: "Ceiling drape detail",        col: "col-span-4",  row: "row-span-2" },
+  { src: "/images/BW8A3472.webp",  alt: "Venue transformation",        col: "col-span-4",  row: "row-span-2" },
+  { src: "/images/BW8A3490.webp",  alt: "Ceiling drape detail",        col: "col-span-4",  row: "row-span-2" },
   // Row 4
-  { src: "/images/BW8A3593.jpg",  alt: "Stage floral arch",           col: "col-span-5",  row: "row-span-4" },
-  { src: "/images/BW8A3604.jpg",  alt: "Crystal chandelier",          col: "col-span-4",  row: "row-span-2" },
-  { src: "/images/BW8A3613.jpg",  alt: "Bridal table setup",          col: "col-span-3",  row: "row-span-2" },
-  { src: "/images/BW8A3618.jpg",  alt: "Event hall overview",         col: "col-span-7",  row: "row-span-2" },
+  { src: "/images/BW8A3593.webp",  alt: "Stage floral arch",           col: "col-span-5",  row: "row-span-4" },
+  { src: "/images/BW8A3604.webp",  alt: "Crystal chandelier",          col: "col-span-4",  row: "row-span-2" },
+  { src: "/images/BW8A3613.webp",  alt: "Bridal table setup",          col: "col-span-3",  row: "row-span-2" },
+  { src: "/images/BW8A3618.webp",  alt: "Event hall overview",         col: "col-span-7",  row: "row-span-2" },
   // Row 5
-  { src: "/images/BW8A3623.jpg",  alt: "Luxury floral centrepiece",   col: "col-span-4",  row: "row-span-3" },
-  { src: "/images/BW8A3656.jpg",  alt: "Ornate room styling",         col: "col-span-4",  row: "row-span-3" },
-  { src: "/images/BW8A3668.jpg",  alt: "Gold accent decor",           col: "col-span-4",  row: "row-span-3" },
+  { src: "/images/BW8A3623.webp",  alt: "Luxury floral centrepiece",   col: "col-span-4",  row: "row-span-3" },
+  { src: "/images/BW8A3656.webp",  alt: "Ornate room styling",         col: "col-span-4",  row: "row-span-3" },
+  { src: "/images/BW8A3668.webp",  alt: "Gold accent decor",           col: "col-span-4",  row: "row-span-3" },
 ];
 
 function Cell({ src, alt, col, row, delay }: typeof GRID[0] & { delay: number }) {

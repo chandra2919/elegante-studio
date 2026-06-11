@@ -1,44 +1,35 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+// Note: CATS filter removed by design — gallery shows all images in full masonry
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { PhotoStrip } from "@/components/home/PhotoStrip";
 
 const ALL_IMAGES = [
-  { src: "/images/BW8A3410.jpg", title: "Grand Dining Suite",       cat: "interiors"  },
-  { src: "/images/BW8A3472.jpg", title: "Crystal Chandelier",       cat: "lighting"   },
-  { src: "/images/BW8A3535.jpg", title: "Black & Gold Study",       cat: "interiors"  },
-  { src: "/images/BW8A3578.jpg", title: "Venetian Art Collection",  cat: "decor"      },
-  { src: "/images/BW8A3694.jpg", title: "Ivory Living Collection",  cat: "furniture"  },
-  { src: "/images/BW8A3877.jpg", title: "Grand Drape Installation", cat: "events"     },
-  { src: "/images/BW8A3887.jpg", title: "Silk Drapery Couture",     cat: "events"     },
-  { src: "/images/BW8A3452.jpg", title: "Beaded Luxury Vessel",     cat: "decor"      },
-  { src: "/images/IMG_9370.jpg", title: "Antique Gold Urn",         cat: "decor"      },
-  { src: "/images/BW8A3607.jpg", title: "Eleganté Brand Wall",      cat: "studio"     },
-  { src: "/images/BW8A3384.jpg", title: "Studio Exterior",          cat: "studio"     },
-  { src: "/images/BW8A3820.jpg", title: "Dare To Have Flair",       cat: "studio"     },
-  { src: "/images/BW8A3593.jpg", title: "Studio Interior",          cat: "interiors"  },
-  { src: "/images/BW8A3604.jpg", title: "Decor Vignette",           cat: "decor"      },
-  { src: "/images/BW8A3646.jpg", title: "Room Styling",             cat: "interiors"  },
-  { src: "/images/BW8A3656.jpg", title: "Furniture Collection",     cat: "furniture"  },
-  { src: "/images/BW8A3725.jpg", title: "Event Styling",            cat: "events"     },
-  { src: "/images/BW8A3784.jpg", title: "Luxury Living",            cat: "interiors"  },
-  { src: "/images/BW8A3836.jpg", title: "Artisan Object",           cat: "decor"      },
-  { src: "/images/BW8A3853.jpg", title: "Gold Detail",              cat: "decor"      },
+  { src: "/images/BW8A3410.webp", title: "Grand Dining Suite",       cat: "interiors"  },
+  { src: "/images/BW8A3472.webp", title: "Crystal Chandelier",       cat: "lighting"   },
+  { src: "/images/BW8A3535.webp", title: "Black & Gold Study",       cat: "interiors"  },
+  { src: "/images/BW8A3578.webp", title: "Venetian Art Collection",  cat: "decor"      },
+  { src: "/images/BW8A3694.webp", title: "Ivory Living Collection",  cat: "furniture"  },
+  { src: "/images/BW8A3877.webp", title: "Grand Drape Installation", cat: "events"     },
+  { src: "/images/BW8A3887.webp", title: "Silk Drapery Couture",     cat: "events"     },
+  { src: "/images/BW8A3452.webp", title: "Beaded Luxury Vessel",     cat: "decor"      },
+  { src: "/images/IMG_9370.webp", title: "Antique Gold Urn",         cat: "decor"      },
+  { src: "/images/BW8A3607.webp", title: "Eleganté Brand Wall",      cat: "studio"     },
+  { src: "/images/BW8A3384.webp", title: "Studio Exterior",          cat: "studio"     },
+  { src: "/images/BW8A3820.webp", title: "Dare To Have Flair",       cat: "studio"     },
+  { src: "/images/BW8A3593.webp", title: "Studio Interior",          cat: "interiors"  },
+  { src: "/images/BW8A3604.webp", title: "Decor Vignette",           cat: "decor"      },
+  { src: "/images/BW8A3646.webp", title: "Room Styling",             cat: "interiors"  },
+  { src: "/images/BW8A3656.webp", title: "Furniture Collection",     cat: "furniture"  },
+  { src: "/images/BW8A3725.webp", title: "Event Styling",            cat: "events"     },
+  { src: "/images/BW8A3784.webp", title: "Luxury Living",            cat: "interiors"  },
+  { src: "/images/BW8A3836.webp", title: "Artisan Object",           cat: "decor"      },
+  { src: "/images/BW8A3853.webp", title: "Gold Detail",              cat: "decor"      },
 ];
 
-const CATS = [
-  { label: "All",       value: "all"       },
-  { label: "Interiors", value: "interiors" },
-  { label: "Events",    value: "events"    },
-  { label: "Decor",     value: "decor"     },
-  { label: "Furniture", value: "furniture" },
-  { label: "Lighting",  value: "lighting"  },
-  { label: "Studio",    value: "studio"    },
-];
 
 function GalleryItem({
   src, title, cat, index, onClick,
@@ -76,6 +67,7 @@ function GalleryItem({
 
   // Scroll-triggered entrance
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const el = ref.current;
     if (!el) return;
     const ctx = gsap.context(() => {
@@ -128,10 +120,7 @@ function GalleryItem({
 }
 
 export default function GalleryPage() {
-  const [active,   setActive]   = useState("all");
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
-
-  const filtered = active === "all" ? ALL_IMAGES : ALL_IMAGES.filter((i) => i.cat === active);
 
   return (
     <>
@@ -152,38 +141,22 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Filter bar */}
-      <div className="bg-luxury-cream/96 backdrop-blur-xl border-b border-luxury-gold/12 sticky top-[66px] z-30">
-        <div className="container-luxury py-4 flex gap-2 overflow-x-auto no-scrollbar">
-          {CATS.map(({ label, value }) => (
-            <button
-              key={value}
-              onClick={() => setActive(value)}
-              className={`flex-shrink-0 px-5 py-2.5 font-inter text-[10px] tracking-[0.22em] uppercase transition-all duration-300 ${
-                active === value
-                  ? "bg-luxury-black text-white border border-luxury-black"
-                  : "bg-transparent text-luxury-gray border border-luxury-gold/20 hover:border-luxury-gold/50 hover:text-luxury-black"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* Auto-scrolling panoramic strip */}
+      <PhotoStrip />
 
       {/* Masonry grid */}
-      <section className="section-pad bg-luxury-cream">
+      <section className="pt-2 pb-20 bg-luxury-cream">
         <div className="container-luxury">
           <AnimatePresence mode="wait">
             <motion.div
-              key={active}
+              key="all"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               className="masonry-grid"
             >
-              {filtered.map((img, i) => (
+              {ALL_IMAGES.map((img, i) => (
                 <GalleryItem
                   key={img.src}
                   {...img}

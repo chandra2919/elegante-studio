@@ -16,7 +16,7 @@ export default function ServicesPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end pb-24 overflow-hidden">
-        <Image src="/images/BW8A3877.jpg" alt="Services" fill className="object-cover" priority />
+        <Image src="/images/BW8A3877.webp" alt="Services" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-luxury-black/65" />
         <div className="container-luxury relative z-10">
           <div className="flex items-center gap-4 mb-6">

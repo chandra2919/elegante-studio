@@ -120,7 +120,7 @@ export default function PortfolioPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end pb-20 overflow-hidden" style={{ minHeight: "60vh" }}>
-        <Image src="/images/BW8A3410.jpg" alt="Portfolio" fill className="object-cover" priority />
+        <Image src="/images/BW8A3410.webp" alt="Portfolio" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/85 via-luxury-black/30 to-transparent" />
         <div className="container-luxury relative z-10">
           <div className="flex items-center gap-4 mb-6">

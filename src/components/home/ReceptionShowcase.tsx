@@ -8,13 +8,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GoldRings, DotMatrix, Sparkle } from "@/components/ui/Decorative";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function ReceptionShowcase() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef    = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // Text parallax upward as you scroll down
       gsap.fromTo(textRef.current,
@@ -32,7 +31,7 @@ export function ReceptionShowcase() {
     <section ref={sectionRef} className="relative overflow-hidden" style={{ height: "clamp(480px,70vw,820px)" }}>
       {/* Full-bleed image */}
       <Image
-        src="/images/BW8A3820.jpg"
+        src="/images/BW8A3820.webp"
         alt="Dare To Have Flair — Eleganté Design Studio"
         fill
         className="object-cover object-center"

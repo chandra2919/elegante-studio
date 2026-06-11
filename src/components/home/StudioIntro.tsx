@@ -11,8 +11,6 @@ import {
   GoldArc, GoldCorner, DiagonalLines,
 } from "@/components/ui/Decorative";
 
-gsap.registerPlugin(ScrollTrigger);
-
 function Img({ src, alt }: { src: string; alt: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -49,6 +47,7 @@ export function StudioIntro() {
   const badgeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       const revealOpts = (el: HTMLElement, fromDir: "left" | "bottom" = "left") => ({
         clipPath: fromDir === "left" ? "inset(0 100% 0 0)" : "inset(100% 0 0 0)",
@@ -112,21 +111,21 @@ export function StudioIntro() {
             <div ref={img1Ref} className="absolute top-0 left-0 w-[78%] h-[70%]
               shadow-luxury-lg overflow-hidden img-frame"
               style={{ clipPath: "inset(0 100% 0 0)" }}>
-              <Img src="/images/BW8A3384.jpg" alt="Eleganté Studio — luxury design process" />
+              <Img src="/images/BW8A3384.webp" alt="Eleganté Studio — luxury design process" />
             </div>
 
             {/* Accent image bottom-right */}
             <div ref={img2Ref} className="absolute bottom-0 right-0 w-[50%] h-[46%]
               overflow-hidden border-[5px] border-luxury-warm shadow-luxury z-10 img-frame"
               style={{ clipPath: "inset(100% 0 0 0)", opacity: 0 }}>
-              <Img src="/images/BW8A3607.jpg" alt="Luxury event decor" />
+              <Img src="/images/BW8A3607.webp" alt="Luxury event decor" />
             </div>
 
             {/* Third accent — mid */}
             <div ref={img3Ref} className="absolute bottom-[20%] left-[58%] w-[28%] h-[24%]
               overflow-hidden border-[4px] border-luxury-warm shadow z-20"
               style={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}>
-              <Img src="/images/BW8A3887.jpg" alt="Studio logo detail" />
+              <Img src="/images/BW8A3887.webp" alt="Studio logo detail" />
             </div>
 
             {/* 20+ years badge */}

@@ -3,8 +3,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
 interface ScrollAnimationOptions {
   from?: gsap.TweenVars;
   to?: gsap.TweenVars;
@@ -20,6 +18,7 @@ export function useScrollAnimation(options: ScrollAnimationOptions = {}) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const el = ref.current;
     if (!el) return;
 
@@ -51,6 +50,7 @@ export function useStaggerAnimation(stagger = 0.12) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const el = ref.current;
     if (!el) return;
 
@@ -84,6 +84,7 @@ export function useParallax(speed = 0.3) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const el = ref.current;
     if (!el) return;
 

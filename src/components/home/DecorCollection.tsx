@@ -9,21 +9,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LuxuryImage } from "@/components/ui/LuxuryImage";
 import { GoldRings, GoldCircle, DotMatrix, GoldDiamond, Sparkle, GoldWave } from "@/components/ui/Decorative";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const DECOR_ITEMS = [
-  { src: "/images/BW8A3452.jpg",  alt: "Beaded luxury ceremonial vessel",        label: "Artisan Vessel",       span: "col-span-1 row-span-2" },
-  { src: "/images/IMG_9370.jpg",  alt: "Antique gold mosaic urn",                label: "Antique Gold Urn",     span: "col-span-1" },
-  { src: "/images/BW8A3578.jpg",  alt: "Venetian bronze carnival masks",         label: "Venetian Masks",       span: "col-span-1" },
-  { src: "/images/BW8A3494.jpg",  alt: "Gold botanical art in ornate frame",     label: "Gold Botanical Art",   span: "col-span-1 row-span-2" },
-  { src: "/images/BW8A3593.jpg",  alt: "Pearl-encrusted gold pitcher vessel",    label: "Pearl Pitcher",        span: "col-span-1" },
-  { src: "/images/BW8A3604.jpg",  alt: "Ornate silver mosaic jewellery box",     label: "Ornament Box",         span: "col-span-1" },
-  { src: "/images/BW8A3490.jpg",  alt: "Damask X-frame ottomon bench",           label: "Damask Ottoman",       span: "col-span-1" },
-  { src: "/images/BW8A3858.jpg",  alt: "Crystal brooch on champagne drape",      label: "Crystal Brooch",       span: "col-span-1" },
-  { src: "/images/IMG_9378.jpg",  alt: "Luxury decorative detail",               label: "Decor Detail",         span: "col-span-1" },
-  { src: "/images/IMG_9385.jpg",  alt: "Studio artisan object",                  label: "Artisan Object",       span: "col-span-1" },
-  { src: "/images/IMG_9352.jpg",  alt: "Luxury accessory detail",                label: "Luxury Accessory",     span: "col-span-1" },
-  { src: "/images/IMG_9362.jpg",  alt: "Eleganté decor collection",              label: "Collection Piece",     span: "col-span-1" },
+  { src: "/images/BW8A3452.webp",  alt: "Beaded luxury ceremonial vessel",        label: "Artisan Vessel",       span: "col-span-1 row-span-2" },
+  { src: "/images/IMG_9370.webp",  alt: "Antique gold mosaic urn",                label: "Antique Gold Urn",     span: "col-span-1" },
+  { src: "/images/BW8A3578.webp",  alt: "Venetian bronze carnival masks",         label: "Venetian Masks",       span: "col-span-1" },
+  { src: "/images/BW8A3494.webp",  alt: "Gold botanical art in ornate frame",     label: "Gold Botanical Art",   span: "col-span-1 row-span-2" },
+  { src: "/images/BW8A3593.webp",  alt: "Pearl-encrusted gold pitcher vessel",    label: "Pearl Pitcher",        span: "col-span-1" },
+  { src: "/images/BW8A3604.webp",  alt: "Ornate silver mosaic jewellery box",     label: "Ornament Box",         span: "col-span-1" },
+  { src: "/images/BW8A3490.webp",  alt: "Damask X-frame ottomon bench",           label: "Damask Ottoman",       span: "col-span-1" },
+  { src: "/images/BW8A3858.webp",  alt: "Crystal brooch on champagne drape",      label: "Crystal Brooch",       span: "col-span-1" },
+  { src: "/images/IMG_9378.webp",  alt: "Luxury decorative detail",               label: "Decor Detail",         span: "col-span-1" },
+  { src: "/images/IMG_9385.webp",  alt: "Studio artisan object",                  label: "Artisan Object",       span: "col-span-1" },
+  { src: "/images/IMG_9352.webp",  alt: "Luxury accessory detail",                label: "Luxury Accessory",     span: "col-span-1" },
+  { src: "/images/IMG_9362.webp",  alt: "Eleganté decor collection",              label: "Collection Piece",     span: "col-span-1" },
 ];
 
 export function DecorCollection() {
@@ -31,6 +29,7 @@ export function DecorCollection() {
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // Header reveal
       gsap.from(headerRef.current, {

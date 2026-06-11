@@ -1,45 +1,36 @@
-import { HeroSection }        from "@/components/home/HeroSection";
-import { MarqueeStrip }       from "@/components/home/MarqueeStrip";
-import { GalleryWall }        from "@/components/home/GalleryWall";
-import { PhotoStrip }         from "@/components/home/PhotoStrip";
-import { StudioIntro }        from "@/components/home/StudioIntro";
-import { CraftDetails }       from "@/components/home/CraftDetails";
-import { ServicesOverview }   from "@/components/home/ServicesOverview";
-import { TestimonialsSection } from "@/components/home/TestimonialsSection";
-import { InstagramShowcase }  from "@/components/home/InstagramShowcase";
-import { ConsultationCTA }    from "@/components/home/ConsultationCTA";
+import dynamic from "next/dynamic";
+import { MarqueeStrip } from "@/components/home/MarqueeStrip";
+
+// HeroSection is fully client-driven (GSAP, mousemove, clip-path animations)
+// ssr:false prevents stale SSR HTML from ever causing hydration mismatches
+const HeroSection = dynamic(
+  () => import("@/components/home/HeroSection").then(m => ({ default: m.HeroSection })),
+  { ssr: false }
+);
+
+// Heavy sections — dynamically imported so they don't block initial paint
+const GalleryWall        = dynamic(() => import("@/components/home/GalleryWall").then(m => ({ default: m.GalleryWall })),        { ssr: false });
+const StudioIntro        = dynamic(() => import("@/components/home/StudioIntro").then(m => ({ default: m.StudioIntro })));
+const CraftDetails       = dynamic(() => import("@/components/home/CraftDetails").then(m => ({ default: m.CraftDetails })),      { ssr: false });
+const ServicesOverview   = dynamic(() => import("@/components/home/ServicesOverview").then(m => ({ default: m.ServicesOverview })));
+const TestimonialsSection= dynamic(() => import("@/components/home/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })));
+const InstagramShowcase  = dynamic(() => import("@/components/home/InstagramShowcase").then(m => ({ default: m.InstagramShowcase })));
+const ConsultationCTA    = dynamic(() => import("@/components/home/ConsultationCTA").then(m => ({ default: m.ConsultationCTA })));
 
 export default function HomePage() {
   return (
     <>
-      {/* 1 — Cinematic 5-image hero */}
+      {/* Above-fold — loaded immediately */}
       <HeroSection />
-
-      {/* 2 — Marquee brand strip */}
       <MarqueeStrip />
 
-      {/* 3 — Massive editorial mosaic gallery (dark bg, 18 images) */}
+      {/* Below-fold — lazy loaded */}
       <GalleryWall />
-
-      {/* 4 — Auto-scrolling panoramic photo strip (15 images) */}
-      <PhotoStrip />
-
-      {/* 5 — Studio story with 3-image collage + timeline */}
       <StudioIntro />
-
-      {/* 6 — Detail masonry grid (12 lifestyle images) + craft copy */}
       <CraftDetails />
-
-      {/* 7 — Services overview */}
       <ServicesOverview />
-
-      {/* 8 — Testimonials */}
       <TestimonialsSection />
-
-      {/* 9 — Instagram / social showcase */}
       <InstagramShowcase />
-
-      {/* 10 — Final CTA */}
       <ConsultationCTA />
     </>
   );

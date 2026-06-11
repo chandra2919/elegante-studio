@@ -6,11 +6,11 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TESTIMONIALS } from "@/lib/data";
 
 const IMAGES = [
-  "/images/BW8A3535.jpg",
-  "/images/BW8A3410.jpg",
-  "/images/BW8A3694.jpg",
-  "/images/BW8A3877.jpg",
-  "/images/BW8A3472.jpg",
+  "/images/BW8A3535.webp",
+  "/images/BW8A3410.webp",
+  "/images/BW8A3694.webp",
+  "/images/BW8A3877.webp",
+  "/images/BW8A3472.webp",
 ];
 
 export function TestimonialsSection() {

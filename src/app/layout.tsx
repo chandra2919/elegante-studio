@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Eleganté Design Studio",
     images: [
       {
-        url: "/images/BW8A3410.jpg",
+        url: "/images/BW8A3410.webp",
         width: 1200,
         height: 630,
         alt: "Eleganté Luxury Interior Design Studio",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Eleganté Interiors & Events",
     description: "Dare to have flair. Michigan's premier luxury interior design studio.",
-    images: ["/images/BW8A3410.jpg"],
+    images: ["/images/BW8A3410.webp"],
   },
   alternates: {
     canonical: "https://www.elegante-studio.com",
@@ -83,6 +83,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload LCP hero images — eliminates render-blocking discovery delay */}
+        <link rel="preload" as="image" href="/images/BW8A3646.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/BW8A3842.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/BW8A3853.webp" type="image/webp" />
         {/* JSON-LD structured data */}
         <LocalBusinessJsonLd />
         <WebSiteJsonLd />

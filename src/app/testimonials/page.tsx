@@ -13,7 +13,7 @@ export default function TestimonialsPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[55vh] flex items-end pb-20 overflow-hidden">
-        <Image src="/images/BW8A3607.jpg" alt="Client Stories" fill className="object-cover" priority />
+        <Image src="/images/BW8A3607.webp" alt="Client Stories" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-luxury-black/70" />
         <div className="container-luxury relative z-10">
           <div className="flex items-center gap-4 mb-6">

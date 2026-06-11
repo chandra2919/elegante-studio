@@ -3,12 +3,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const IMAGES = [
-  "/images/BW8A3535.jpg",
-  "/images/BW8A3578.jpg",
-  "/images/IMG_9370.jpg",
-  "/images/BW8A3452.jpg",
-  "/images/BW8A3694.jpg",
-  "/images/BW8A3887.jpg",
+  "/images/BW8A3535.webp",
+  "/images/BW8A3578.webp",
+  "/images/IMG_9370.webp",
+  "/images/BW8A3452.webp",
+  "/images/BW8A3694.webp",
+  "/images/BW8A3887.webp",
 ];
 
 export function InstagramShowcase() {

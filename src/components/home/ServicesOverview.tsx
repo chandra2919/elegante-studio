@@ -92,9 +92,11 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
             />
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/50 via-transparent to-transparent" />
-            {/* Category pill */}
-            <div className="absolute top-4 left-4 flex items-center gap-2">
-              <span className="text-lg">{service.icon}</span>
+            {/* Category eyebrow pill */}
+            <div className="absolute top-4 left-4">
+              <span className="eyebrow text-[8px] bg-luxury-black/50 backdrop-blur-sm text-luxury-gold px-3 py-1.5 tracking-[0.22em]">
+                {service.subtitle}
+              </span>
             </div>
             {/* Starting price */}
             {service.startingPrice && (
@@ -109,7 +111,7 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[0]; index: n
             {/* Animated top border */}
             <div className="absolute top-0 left-0 h-px w-0 bg-luxury-gold group-hover:w-full transition-all duration-700" />
 
-            <div className="eyebrow text-[9px] mb-3 text-luxury-gold/80">{service.subtitle}</div>
+            <div className="eyebrow text-[9px] mb-3 text-luxury-gold/80">{service.title}</div>
             <h3 className="font-cormorant text-2xl font-light text-luxury-black mb-3 group-hover:text-luxury-pink transition-colors duration-400">
               {service.title}
             </h3>

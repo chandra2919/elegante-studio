@@ -13,8 +13,8 @@ export function LocalBusinessJsonLd() {
     description:
       "Michigan's premier luxury interior design studio. Bespoke residential design, event styling, furniture curation, and floral installations. Est. 2004.",
     url: "https://www.elegante-studio.com",
-    logo: "https://www.elegante-studio.com/images/Logo2.jpg",
-    image: "https://www.elegante-studio.com/images/BW8A3410.jpg",
+    logo: "https://www.elegante-studio.com/images/Logo2.webp",
+    image: "https://www.elegante-studio.com/images/BW8A3410.webp",
     telephone: "+1-248-555-0198",
     email: "hello@elegante-studio.com",
     priceRange: "$$$",

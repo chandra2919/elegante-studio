@@ -47,13 +47,13 @@ function LuxuryInput({
     if (lineRef.current) gsap.to(lineRef.current, { scaleX: 0, duration: 0.3, ease: "power2.in", overwrite: true });
   };
 
-  const sharedCls = "w-full bg-transparent border-none outline-none font-inter text-sm text-luxury-black placeholder-luxury-gray/40 pb-2 pt-2 focus-visible:outline-none";
+  const sharedCls = "w-full bg-transparent border-none outline-none font-inter text-[13.5px] font-medium text-luxury-black placeholder-luxury-gray/50 pb-2 pt-2 focus-visible:outline-none";
 
   return (
     <div className="relative group">
       {/* htmlFor links label to input — accessibility fix */}
-      <label htmlFor={id} className="eyebrow text-[8px] block mb-2 text-luxury-gold/80">{label}</label>
-      <div className="relative border-b border-luxury-gold/20">
+      <label htmlFor={id} className="eyebrow text-[8px] block mb-2 text-luxury-gold">{label}</label>
+      <div className="relative border-b border-luxury-gold/25">
         {as === "textarea" ? (
           <textarea
             id={id}
@@ -103,26 +103,56 @@ function LuxuryInput({
 }
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading,   setLoading]   = useState(false);
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const [submitted,   setSubmitted]   = useState(false);
+  const [loading,     setLoading]     = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const btnRef  = useRef<HTMLButtonElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
+    setSubmitError("");
+
     if (btnRef.current) {
-      gsap.to(btnRef.current, { scale: 0.98, duration: 0.1, yoyo: true, repeat: 1 });
+      gsap.to(btnRef.current, { scale: 0.97, duration: 0.1, yoyo: true, repeat: 1 });
     }
-    await new Promise((r) => setTimeout(r, 1800));
-    setLoading(false);
-    setSubmitted(true);
+
+    // Collect all field values from the form
+    const fd = new FormData(formRef.current!);
+    const data: Record<string, string> = {};
+    fd.forEach((v, k) => { data[k] = v.toString(); });
+
+    // Map generic field IDs to readable keys using placeholder values
+    // (We collect by field position since LuxuryInput generates IDs like field-1..N)
+    const inputs = formRef.current!.querySelectorAll("input, select, textarea");
+    const fieldNames = ["firstName","lastName","email","phone","service","vision"];
+    inputs.forEach((el, i) => {
+      if (fieldNames[i]) data[fieldNames[i]] = (el as HTMLInputElement).value;
+    });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Server error");
+
+      setLoading(false);
+      setSubmitted(true);
+
+    } catch {
+      setLoading(false);
+      setSubmitError("Something went wrong. Please try again or call us directly.");
+    }
   }
 
   return (
     <>
       {/* Hero */}
       <section className="relative flex items-end pb-24 overflow-hidden" style={{ minHeight: "62vh" }}>
-        <Image src="/images/BW8A3383.jpg" alt="Contact Eleganté" fill className="object-cover" priority />
+        <Image src="/images/BW8A3383.webp" alt="Contact Eleganté" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/80 via-luxury-black/35 to-transparent" />
         <div className="container-luxury relative z-10">
           <motion.div
@@ -226,7 +256,7 @@ export default function ContactPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                      className="flex flex-col items-center justify-center py-16 text-center"
+                      className="flex flex-col items-center justify-center py-12 text-center"
                     >
                       {/* Animated checkmark */}
                       <motion.div
@@ -237,13 +267,16 @@ export default function ContactPage() {
                       >
                         <span className="text-luxury-gold text-2xl">✦</span>
                       </motion.div>
-                      <h3 className="font-cormorant text-3xl text-luxury-black font-light mb-4">Thank You</h3>
-                      <p className="text-body-md text-luxury-gray font-light leading-relaxed max-w-sm mb-8">
+
+                      <h3 className="font-cormorant text-3xl text-luxury-black font-light mb-3">Thank You</h3>
+                      <p className="text-body-md text-luxury-gray font-medium leading-relaxed max-w-sm mb-8">
                         Your enquiry has been received. Our team will be in touch within 24 hours.
+                        A WhatsApp message has been prepared for you.
                       </p>
+
                       <button
                         onClick={() => setSubmitted(false)}
-                        className="eyebrow text-[9px] text-luxury-gold underline-draw hover:text-luxury-black transition-colors duration-300"
+                        className="mt-2 eyebrow text-[9px] text-luxury-gold hover:text-luxury-black transition-colors duration-300"
                       >
                         Submit another enquiry
                       </button>
@@ -251,15 +284,16 @@ export default function ContactPage() {
                   ) : (
                     <motion.form
                       key="form"
+                      ref={formRef}
                       initial={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onSubmit={handleSubmit}
                       className="flex flex-col gap-6"
                     >
-                      <h3 className="font-cormorant text-2xl text-luxury-black font-light mb-2">
+                      <h3 className="font-cormorant text-[28px] text-luxury-black font-semibold mb-2 leading-snug">
                         Book a Private Consultation
                       </h3>
-                      <p className="text-body-sm text-luxury-gray font-light -mt-2 mb-4">
+                      <p className="text-body-sm text-luxury-gray font-medium -mt-2 mb-4">
                         Tell us about your vision and we will be in touch.
                       </p>
 
@@ -275,6 +309,10 @@ export default function ContactPage() {
                       </LuxuryInput>
                       <LuxuryInput label="Your Vision" as="textarea" rows={4}
                         placeholder="Tell us about your project and what luxury means to you…" />
+
+                      {submitError && (
+                        <p className="text-[11px] text-red-600 font-inter text-center -mt-2">{submitError}</p>
+                      )}
 
                       <MagneticButton strength={0.15} className="w-full mt-2">
                         <button
@@ -297,7 +335,7 @@ export default function ContactPage() {
                         </button>
                       </MagneticButton>
 
-                      <p className="text-[10px] text-luxury-gray/50 text-center font-inter leading-relaxed">
+                      <p className="text-[10px] text-luxury-gray/60 text-center font-inter leading-relaxed">
                         By submitting, you agree to our privacy policy. We never share your information.
                       </p>
                     </motion.form>

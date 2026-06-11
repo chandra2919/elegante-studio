@@ -4,21 +4,21 @@ import Image from "next/image";
 import { GoldDiamond } from "@/components/ui/Decorative";
 
 const STRIP_IMAGES = [
-  { src: "/images/BW8A3694.jpg", alt: "Luxury venue styling"         },
-  { src: "/images/BW8A3717.jpg", alt: "Event floral arch"            },
-  { src: "/images/BW8A3725.jpg", alt: "Centrepiece detail"           },
-  { src: "/images/BW8A3754.jpg", alt: "Grand reception hall"         },
-  { src: "/images/BW8A3784.jpg", alt: "Hanging floral installation"  },
-  { src: "/images/BW8A3820.jpg", alt: "Intimate dining setup"        },
-  { src: "/images/BW8A3824.jpg", alt: "Stage decoration"             },
-  { src: "/images/BW8A3836.jpg", alt: "Entrance arch styling"        },
-  { src: "/images/BW8A3858.jpg", alt: "Luxury chandelier room"       },
-  { src: "/images/BW8A3877.jpg", alt: "Ornamental table design"      },
-  { src: "/images/BW8A3879.jpg", alt: "Bridal floral wall"           },
-  { src: "/images/BW8A3881.jpg", alt: "Event ceiling draping"        },
-  { src: "/images/BW8A3882.jpg", alt: "Gold and white theme setup"   },
-  { src: "/images/BW8A3886.jpg", alt: "Premium table decor"          },
-  { src: "/images/BW8A3899.jpg", alt: "Luxury event ambience"        },
+  { src: "/images/BW8A3694.webp", alt: "Luxury venue styling"         },
+  { src: "/images/BW8A3717.webp", alt: "Event floral arch"            },
+  { src: "/images/BW8A3725.webp", alt: "Centrepiece detail"           },
+  { src: "/images/BW8A3754.webp", alt: "Grand reception hall"         },
+  { src: "/images/BW8A3784.webp", alt: "Hanging floral installation"  },
+  { src: "/images/BW8A3820.webp", alt: "Intimate dining setup"        },
+  { src: "/images/BW8A3824.webp", alt: "Stage decoration"             },
+  { src: "/images/BW8A3836.webp", alt: "Entrance arch styling"        },
+  { src: "/images/BW8A3858.webp", alt: "Luxury chandelier room"       },
+  { src: "/images/BW8A3877.webp", alt: "Ornamental table design"      },
+  { src: "/images/BW8A3879.webp", alt: "Bridal floral wall"           },
+  { src: "/images/BW8A3881.webp", alt: "Event ceiling draping"        },
+  { src: "/images/BW8A3882.webp", alt: "Gold and white theme setup"   },
+  { src: "/images/BW8A3886.webp", alt: "Premium table decor"          },
+  { src: "/images/BW8A3899.webp", alt: "Luxury event ambience"        },
 ];
 
 // Double for seamless loop

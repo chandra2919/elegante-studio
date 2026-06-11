@@ -35,7 +35,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="relative w-12 h-12 flex-shrink-0 overflow-hidden">
-                <Image src="/images/Logo2.jpg" alt="Eleganté" fill className="object-cover" />
+                <Image src="/images/Logo2.webp" alt="Eleganté" fill className="object-cover" />
               </div>
               <div>
                 <div className="font-cormorant text-xl text-white">Eleganté</div>
