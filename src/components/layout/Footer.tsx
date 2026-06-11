@@ -23,7 +23,7 @@ export function Footer() {
             </h3>
           </div>
           <Link href="/contact" className="btn-luxury-gold flex-shrink-0">
-            Book Private Consultation
+            Contact Us
           </Link>
         </div>
       </div>

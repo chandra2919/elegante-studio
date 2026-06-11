@@ -212,7 +212,7 @@ export function HeroSection() {
           <div ref={ctaRef} className="flex flex-wrap gap-4 mb-12">
             <MagneticButton strength={0.25}>
               <Link href="/contact" className="btn-luxury-primary">
-                Book Consultation<span className="btn-arrow-line" />
+                Contact Us<span className="btn-arrow-line" />
               </Link>
             </MagneticButton>
             <MagneticButton strength={0.2}>

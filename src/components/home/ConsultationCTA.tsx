@@ -78,7 +78,7 @@ export function ConsultationCTA() {
           <div className="flex flex-wrap gap-5 justify-center">
             <MagneticButton strength={0.25}>
               <Link href="/contact" className="btn-luxury-gold">
-                Book Private Consultation
+                Contact Us
                 <span className="btn-arrow-line" />
               </Link>
             </MagneticButton>

@@ -163,7 +163,7 @@ export function Navbar() {
                   : "border border-luxury-gold text-luxury-black hover:bg-luxury-gold hover:text-white",
               )}
             >
-              Book Consultation
+              Contact Us
             </Link>
           </div>
 
@@ -238,7 +238,7 @@ export function Navbar() {
                 className="mt-3"
               >
                 <Link href="/contact" className="btn-luxury-primary outline-none focus-visible:outline-none">
-                  Book Consultation
+                  Contact Us
                 </Link>
               </motion.div>
             </div>

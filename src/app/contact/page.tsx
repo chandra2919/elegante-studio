@@ -291,7 +291,7 @@ export default function ContactPage() {
                       className="flex flex-col gap-6"
                     >
                       <h3 className="font-cormorant text-[28px] text-luxury-black font-semibold mb-2 leading-snug">
-                        Book a Private Consultation
+                        Contact Us
                       </h3>
                       <p className="text-body-sm text-luxury-gray font-medium -mt-2 mb-4">
                         Tell us about your vision and we will be in touch.
@@ -328,7 +328,7 @@ export default function ContactPage() {
                             </span>
                           ) : (
                             <>
-                              Request Private Consultation
+                              Contact Us
                               <span className="btn-arrow-line" />
                             </>
                           )}
