@@ -32,8 +32,19 @@ export default function TestimonialsPage() {
         <div className="container-luxury">
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {STATS.map((stat, i) => (
-              <div key={stat.label} className={`py-14 px-8 text-center border-r border-luxury-gold/12 last:border-r-0 ${i >= 2 ? "border-t border-luxury-gold/12 lg:border-t-0" : ""}`}>
-                <div className="font-cormorant text-5xl font-light text-luxury-black">
+              <div
+                key={stat.label}
+                className={`relative py-14 px-8 text-center border-r border-luxury-gold/12 last:border-r-0 overflow-hidden group hover:bg-luxury-cream/50 transition-colors duration-400 ${i >= 2 ? "border-t border-luxury-gold/12 lg:border-t-0" : ""}`}
+              >
+                {/* Concentric circles — top right */}
+                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
+                  <div className="w-20 h-20 rounded-full border border-luxury-gold/8 group-hover:border-luxury-gold/20 transition-colors duration-500" />
+                  <div className="absolute inset-3 rounded-full border border-luxury-gold/6 group-hover:border-luxury-gold/14 transition-colors duration-500" />
+                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                </div>
+                {/* Bottom-left bracket */}
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
+                <div className="font-cormorant text-5xl font-light text-luxury-black group-hover:text-luxury-gold transition-colors duration-400">
                   {stat.number}<span className="text-luxury-gold">{stat.suffix}</span>
                 </div>
                 <div className="eyebrow text-[9px] mt-3">{stat.label}</div>
@@ -48,7 +59,21 @@ export default function TestimonialsPage() {
         <div className="container-luxury">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {TESTIMONIALS.map((t) => (
-              <div key={t.id} className="bg-white border border-luxury-gold/10 p-10 hover:border-luxury-gold/30 hover:shadow-luxury transition-all duration-500 relative">
+              <div key={t.id} className="group bg-white border border-luxury-gold/10 p-10 hover:border-luxury-gold/30 hover:shadow-luxury transition-all duration-500 relative overflow-hidden">
+                {/* Gold top bar — slides in on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                {/* Concentric circles — bottom right */}
+                <div className="absolute -bottom-6 -right-6 pointer-events-none select-none">
+                  <div className="w-24 h-24 rounded-full border border-luxury-gold/6 group-hover:border-luxury-gold/18 transition-colors duration-500" />
+                  <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/14 transition-colors duration-500" />
+                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                </div>
+
+                {/* Corner brackets */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
+
                 {/* Stars */}
                 <div className="flex gap-1 mb-6">
                   {Array.from({ length: t.rating }).map((_, i) => (
@@ -57,7 +82,7 @@ export default function TestimonialsPage() {
                 </div>
 
                 {/* Quote mark */}
-                <div className="font-cormorant text-6xl text-luxury-gold/12 leading-none mb-3 absolute top-6 right-8">"</div>
+                <div className="font-cormorant text-6xl text-luxury-gold/12 group-hover:text-luxury-gold/25 transition-colors duration-400 leading-none mb-3 absolute top-6 right-8">"</div>
 
                 {/* Text */}
                 <p className="font-cormorant text-lg italic text-luxury-black leading-relaxed mb-8 font-light">

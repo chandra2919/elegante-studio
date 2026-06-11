@@ -101,9 +101,17 @@ export default function AboutPage() {
             {STATS.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`py-16 px-8 text-center border-r border-luxury-gold/15 last:border-r-0 ${i >= 2 ? "border-t border-luxury-gold/15 lg:border-t-0" : ""}`}
+                className={`relative py-16 px-8 text-center border-r border-luxury-gold/15 last:border-r-0 overflow-hidden group hover:bg-luxury-cream/50 transition-colors duration-400 ${i >= 2 ? "border-t border-luxury-gold/15 lg:border-t-0" : ""}`}
               >
-                <div className="font-cormorant text-6xl font-light text-luxury-black">
+                {/* Concentric circles — top right */}
+                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
+                  <div className="w-20 h-20 rounded-full border border-luxury-gold/8 group-hover:border-luxury-gold/22 transition-colors duration-500" />
+                  <div className="absolute inset-3 rounded-full border border-luxury-gold/6 group-hover:border-luxury-gold/16 transition-colors duration-500" />
+                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                </div>
+                {/* Bottom-left bracket */}
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
+                <div className="font-cormorant text-6xl font-light text-luxury-black group-hover:text-luxury-gold transition-colors duration-400">
                   {stat.number}<span className="text-luxury-gold">{stat.suffix}</span>
                 </div>
                 <div className="eyebrow text-[9px] mt-3">{stat.label}</div>
@@ -124,8 +132,19 @@ export default function AboutPage() {
               { label: "Vision",     text: "To be Michigan's most celebrated luxury design studio — known not just for beautiful rooms, but for the extraordinary experiences we create for our clients." },
               { label: "Philosophy", text: "Design is deeply personal. We believe that great interiors don't follow trends — they express truth. Our work is guided by the conviction that beauty is a necessity, not a luxury." },
             ].map(({ label, text }) => (
-              <div key={label} className="bg-luxury-cream p-12">
-                <div className="eyebrow mb-4">{label}</div>
+              <div key={label} className="group relative bg-luxury-cream p-12 overflow-hidden hover:bg-luxury-warm transition-colors duration-400">
+                {/* Gold top bar */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Concentric circles corner */}
+                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
+                  <div className="w-20 h-20 rounded-full border border-luxury-gold/7 group-hover:border-luxury-gold/20 transition-colors duration-500" />
+                  <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/14 transition-colors duration-500" />
+                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                </div>
+                {/* Bottom corner brackets */}
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
+                <div className="eyebrow mb-4 group-hover:text-luxury-gold transition-colors duration-400">{label}</div>
                 <p className="font-cormorant text-xl text-luxury-black leading-relaxed font-light">{text}</p>
               </div>
             ))}
@@ -134,10 +153,21 @@ export default function AboutPage() {
           {/* Values grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {VALUES.map(({ title, icon, desc }) => (
-              <div key={title} className="group text-center p-8 border border-luxury-gold/12 hover:border-luxury-gold/35 hover:shadow-luxury transition-all duration-500">
-                <div className="text-luxury-gold text-2xl mb-5">{icon}</div>
-                <h3 className="font-cormorant text-xl text-luxury-black mb-4">{title}</h3>
-                <p className="text-body-sm text-luxury-gray leading-relaxed font-light">{desc}</p>
+              <div key={title} className="group relative text-center p-8 border border-luxury-gold/12 hover:border-luxury-gold/35 hover:shadow-luxury transition-all duration-500 overflow-hidden">
+                {/* Gold top bar */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Concentric circles — top right */}
+                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
+                  <div className="w-18 h-18 rounded-full border border-luxury-gold/7 group-hover:border-luxury-gold/20 transition-colors duration-500" style={{width:"72px",height:"72px"}} />
+                  <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/14 transition-colors duration-500" />
+                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                </div>
+                {/* Corner brackets */}
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
+                <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
+                <div className="text-luxury-gold text-2xl mb-5 relative z-10">{icon}</div>
+                <h3 className="font-cormorant text-xl text-luxury-black mb-4 group-hover:text-luxury-gold transition-colors duration-400 relative z-10">{title}</h3>
+                <p className="text-body-sm text-luxury-gray leading-relaxed font-light relative z-10">{desc}</p>
               </div>
             ))}
           </div>

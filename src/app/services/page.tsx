@@ -41,8 +41,11 @@ export default function ServicesPage() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group bg-luxury-cream flex gap-0 hover:bg-luxury-warm transition-colors duration-400 overflow-hidden"
+                className="group bg-luxury-cream flex gap-0 hover:bg-luxury-warm transition-colors duration-400 overflow-hidden relative"
               >
+                {/* Gold top bar */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+
                 {/* Image panel */}
                 <div className="relative w-52 flex-shrink-0 overflow-hidden hidden md:block">
                   <Image
@@ -55,7 +58,17 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Content */}
-                <div className="p-10 flex-1">
+                <div className="p-10 flex-1 relative">
+                  {/* Concentric circles — top right of content area */}
+                  <div className="absolute -top-5 -right-5 pointer-events-none select-none">
+                    <div className="w-20 h-20 rounded-full border border-luxury-gold/7 group-hover:border-luxury-gold/22 transition-colors duration-500" />
+                    <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/15 transition-colors duration-500" />
+                    <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                  </div>
+                  {/* Bottom corner brackets */}
+                  <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
+                  <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
+
                   <div className="flex items-start justify-between mb-4">
                     {service.startingPrice && (
                       <span className="eyebrow text-[9px] text-luxury-gray">From {service.startingPrice}</span>
