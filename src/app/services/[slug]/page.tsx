@@ -34,7 +34,6 @@ export default function ServicePage({ params }: Props) {
           <Link href="/services" className="eyebrow text-luxury-gold/70 hover:text-luxury-gold flex items-center gap-2 mb-8 transition-colors">
             ← All Services
           </Link>
-          <span className="text-4xl mb-4 block">{service.icon}</span>
           <div className="eyebrow text-luxury-gold mb-3">{service.subtitle}</div>
           <h1 className="heading-display text-display-xl text-white mb-6">{service.title}</h1>
           <p className="text-body-lg text-white/55 max-w-xl font-light">{service.description}</p>
@@ -105,7 +104,6 @@ export default function ServicePage({ params }: Props) {
             {service.process.map((step) => (
               <div key={step.step} className="p-8 border border-luxury-gold/12 hover:border-luxury-gold/35 hover:shadow-luxury transition-all duration-500">
                 <div className="font-cormorant text-5xl font-light text-luxury-gold/20 mb-4">{String(step.step).padStart(2,"0")}</div>
-                <div className="text-2xl mb-3">{step.icon}</div>
                 <h3 className="font-cormorant text-xl text-luxury-black mb-3">{step.title}</h3>
                 <p className="text-body-sm text-luxury-gray font-light leading-relaxed">{step.description}</p>
               </div>

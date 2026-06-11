@@ -13,13 +13,13 @@ export const STATS: Stat[] = [
 /* ─────────────────────────────────────────────
    PROCESS STEPS
 ───────────────────────────────────────────── */
-export const PROCESS_STEPS = [
-  { step: 1, title: "Discovery",         icon: "💬", description: "A private consultation to understand your vision, lifestyle, and aspirations." },
-  { step: 2, title: "Concept Design",    icon: "✏️", description: "Bespoke mood boards, spatial layouts, and material narratives crafted for you." },
-  { step: 3, title: "Material Selection",icon: "🎨", description: "Hand-selecting premium fabrics, finishes, and furniture curated exclusively." },
-  { step: 4, title: "Execution",         icon: "🏛️", description: "Master craftsmen and installation teams bring every detail to life with precision." },
-  { step: 5, title: "Styling",           icon: "🌸", description: "Florals, accessories, and lighting positioned to create the perfect atmosphere." },
-  { step: 6, title: "Final Delivery",    icon: "✨", description: "The reveal moment — your extraordinary space, ready to be lived in and celebrated." },
+export const PROCESS_STEPS: import("./types").ProcessStep[] = [
+  { step: 1, title: "Discovery",          description: "A private consultation to understand your vision, lifestyle, and aspirations." },
+  { step: 2, title: "Concept Design",     description: "Bespoke mood boards, spatial layouts, and material narratives crafted for you." },
+  { step: 3, title: "Material Selection", description: "Hand-selecting premium fabrics, finishes, and furniture curated exclusively." },
+  { step: 4, title: "Execution",          description: "Master craftsmen and installation teams bring every detail to life with precision." },
+  { step: 5, title: "Styling",            description: "Florals, accessories, and lighting positioned to create the perfect atmosphere." },
+  { step: 6, title: "Final Delivery",     description: "The reveal moment — your extraordinary space, ready to be lived in and celebrated." },
 ];
 
 /* ─────────────────────────────────────────────
@@ -176,7 +176,6 @@ export const SERVICES: Service[] = [
     subtitle: "Your Home, Elevated",
     description: "Full-service luxury residential interior design from concept to completion.",
     longDescription: "We create bespoke living environments that perfectly reflect your identity, lifestyle, and aspirations. From intimate apartments to grand estates, every project receives the same meticulous attention to detail and uncompromising standard of excellence.",
-    icon: "🏠",
     heroImage: "/images/BW8A3694.webp",
     galleryImages: ["/images/BW8A3410.webp", "/images/BW8A3535.webp", "/images/BW8A3694.webp", "/images/BW8A3877.webp"],
     benefits: ["Bespoke design tailored exclusively to you", "Access to exclusive trade-only showrooms", "Full project management from concept to completion", "Custom furniture sourcing and specification", "Art and accessory curation", "Dedicated project coordinator"],
@@ -195,7 +194,6 @@ export const SERVICES: Service[] = [
     subtitle: "Spaces That Perform",
     description: "Luxury commercial environments that reflect your brand values and engage your clients.",
     longDescription: "A premium commercial space is your most powerful marketing tool. We design commercial environments that immediately communicate quality, authority, and sophistication — from executive offices to luxury retail boutiques.",
-    icon: "🏛️",
     heroImage: "/images/BW8A3535.webp",
     galleryImages: ["/images/BW8A3535.webp", "/images/BW8A3578.webp", "/images/BW8A3452.webp", "/images/BW8A3694.webp"],
     benefits: ["Brand-aligned spatial design", "Customer journey mapping", "Wayfinding and signage coordination", "Acoustic and lighting specification", "Furniture and fixture procurement", "Phased delivery for minimal disruption"],
@@ -213,7 +211,6 @@ export const SERVICES: Service[] = [
     subtitle: "Experiences That Last Forever",
     description: "Transforming venues into extraordinary event environments.",
     longDescription: "Every celebration deserves a setting as beautiful as the moment itself. Our event styling team specialises in luxury weddings, galas, corporate events, and private parties — creating immersive environments that make guests feel they have stepped into another world.",
-    icon: "🌸",
     heroImage: "/images/BW8A3877.webp",
     galleryImages: ["/images/BW8A3877.webp", "/images/BW8A3887.webp", "/images/BW8A3472.webp", "/images/BW8A3410.webp"],
     benefits: ["Full venue transformation", "Bespoke floral installations", "Luxury draping and ceiling treatments", "Lighting design and coordination", "Centrepiece and table styling", "Day-of setup and breakdown"],
@@ -231,7 +228,6 @@ export const SERVICES: Service[] = [
     subtitle: "The Art of the Detail",
     description: "Premium decorative object sourcing and vignette styling.",
     longDescription: "The most beautiful rooms are defined by their objects. We source, curate, and place decorative accessories — from antique urns and sculptural pieces to custom florals and artisan objects — that elevate a space from beautiful to unforgettable.",
-    icon: "✨",
     heroImage: "/images/IMG_9370.webp",
     galleryImages: ["/images/IMG_9370.webp", "/images/BW8A3578.webp", "/images/BW8A3452.webp", "/images/BW8A3694.webp"],
     benefits: ["Bespoke accessory curation", "Antique and vintage sourcing", "Art consultation and placement", "Vignette and shelf styling", "Seasonal refreshes", "Object restoration referrals"],
@@ -248,7 +244,6 @@ export const SERVICES: Service[] = [
     subtitle: "Nature as Luxury Art",
     description: "Bespoke floral design and permanent installation.",
     longDescription: "Flowers are the ultimate luxury accent. Our floral design team creates both fresh and preservation-quality permanent installations that become signature features of your space — from towering entrance arrangements to delicate table florals.",
-    icon: "🌺",
     heroImage: "/images/BW8A3607.webp",
     galleryImages: ["/images/BW8A3607.webp", "/images/BW8A3472.webp", "/images/BW8A3877.webp", "/images/BW8A3694.webp"],
     benefits: ["Fresh and preserved flower options", "Custom vessel and container sourcing", "Seasonal rotation programs", "Event floral coordination", "Permanent installation design", "Ongoing maintenance programs"],
@@ -265,7 +260,6 @@ export const SERVICES: Service[] = [
     subtitle: "Investments in Beauty",
     description: "Access to exclusive luxury furniture collections and custom pieces.",
     longDescription: "We provide access to trade-exclusive luxury furniture showrooms, custom manufacturers, and antique dealers unavailable to the general public. Every piece we specify is an investment in quality, beauty, and longevity.",
-    icon: "🛋️",
     heroImage: "/images/BW8A3694.webp",
     galleryImages: ["/images/BW8A3694.webp", "/images/BW8A3410.webp", "/images/BW8A3535.webp", "/images/BW8A3452.webp"],
     benefits: ["Access to trade-only collections", "Custom specification and commissioning", "Antique and vintage sourcing", "White-glove delivery coordination", "Furniture restoration referrals", "Investment piece advisory"],

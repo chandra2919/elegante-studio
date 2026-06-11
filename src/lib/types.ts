@@ -30,7 +30,7 @@ export interface Service {
   subtitle: string;
   description: string;
   longDescription: string;
-  icon: string;
+  icon?: string;
   heroImage: string;
   galleryImages: string[];
   benefits: string[];
@@ -44,7 +44,7 @@ export interface ProcessStep {
   step: number;
   title: string;
   description: string;
-  icon: string;
+  icon?: string;
 }
 
 export interface Testimonial {

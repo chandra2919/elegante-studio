@@ -57,7 +57,6 @@ export default function ServicesPage() {
                 {/* Content */}
                 <div className="p-10 flex-1">
                   <div className="flex items-start justify-between mb-4">
-                    <span className="text-3xl">{service.icon}</span>
                     {service.startingPrice && (
                       <span className="eyebrow text-[9px] text-luxury-gray">From {service.startingPrice}</span>
                     )}
@@ -88,7 +87,6 @@ export default function ServicesPage() {
                 <div className="font-cormorant text-6xl font-light text-luxury-gold/12 mb-4">
                   {String(step.step).padStart(2, "0")}
                 </div>
-                <div className="text-2xl mb-4">{step.icon}</div>
                 <h3 className="font-cormorant text-xl text-white mb-3">{step.title}</h3>
                 <p className="text-body-sm text-white/40 leading-relaxed font-light">{step.description}</p>
               </div>
