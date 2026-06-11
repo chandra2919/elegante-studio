@@ -216,8 +216,8 @@ export function HeroSection() {
               </Link>
             </MagneticButton>
             <MagneticButton strength={0.2}>
-              <Link href="/portfolio" className="btn-luxury-outline">
-                View Portfolio<span className="btn-arrow-line" />
+              <Link href="/gallery" className="btn-luxury-outline">
+                View Gallery<span className="btn-arrow-line" />
               </Link>
             </MagneticButton>
           </div>

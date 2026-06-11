@@ -106,7 +106,7 @@ export function Navbar() {
           {/* ── DESKTOP NAV LINKS ─────────────────────────────── */}
           <ul className="hidden lg:flex items-center gap-8 relative">
             {NAV_LINKS.map((link) => {
-              const isActive = pathname.startsWith(link.href) && link.href !== "/";
+              const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
               const isHov    = hovered === link.href;
 
               return (
@@ -221,7 +221,7 @@ export function Navbar() {
                       "font-cormorant text-5xl font-light block text-center",
                       "outline-none focus-visible:outline-none",
                       "hover:text-luxury-pink transition-colors duration-300",
-                      pathname.startsWith(link.href) && link.href !== "/"
+                      (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href))
                         ? "text-luxury-gold"
                         : "text-luxury-black",
                     )}

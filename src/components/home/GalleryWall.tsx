@@ -130,9 +130,9 @@ export function GalleryWall() {
 
         {/* CTA */}
         <div className="flex justify-center mt-14">
-          <Link href="/portfolio"
+          <Link href="/gallery"
             className="btn-luxury-gold hover:opacity-90 transition-opacity">
-            Explore Full Portfolio
+            Explore Full Gallery
             <span className="btn-arrow-line" />
           </Link>
         </div>

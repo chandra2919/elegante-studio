@@ -336,10 +336,10 @@ export const BLOG_POSTS: BlogPost[] = [
    NAV LINKS
 ───────────────────────────────────────────── */
 export const NAV_LINKS = [
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Services",  href: "/services"  },
-  { label: "Process",   href: "/process"   },
-  { label: "Gallery",   href: "/gallery"   },
-  { label: "Journal",   href: "/blog"      },
-  { label: "About",     href: "/about"     },
+  { label: "Home",     href: "/"          },
+  { label: "About",    href: "/about"     },
+  { label: "Services", href: "/services"  },
+  { label: "Process",  href: "/process"   },
+  { label: "Gallery",  href: "/gallery"   },
+  { label: "Journal",  href: "/blog"      },
 ];

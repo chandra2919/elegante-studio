@@ -84,7 +84,7 @@ export function ConsultationCTA() {
             </MagneticButton>
             <MagneticButton strength={0.2}>
               <Link
-                href="/portfolio"
+                href="/gallery"
                 className="btn-luxury-outline"
                 style={{ borderColor: "rgba(255,255,255,0.25)", color: "white" }}
               >
