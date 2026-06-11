@@ -160,7 +160,7 @@ export function Navbar() {
                 "font-inter text-[9.5px] tracking-[0.22em] uppercase px-6 py-3 transition-all duration-400 outline-none focus-visible:outline-none",
                 isOverImage
                   ? "border border-white/50 text-white hover:bg-white hover:text-luxury-black"
-                  : "border border-luxury-gold text-luxury-black hover:bg-luxury-gold hover:text-white",
+                  : "border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-white",
               )}
             >
               Contact Us

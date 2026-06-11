@@ -78,19 +78,71 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Overview */}
-      <section className="section-pad bg-luxury-black">
-        <div className="container-luxury">
-          <SectionHeader eyebrow="How We Work" title={<>Our <em className="italic text-luxury-gold font-light">Signature</em> Process</>} light className="mb-16" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROCESS_STEPS.map((step) => (
-              <div key={step.step} className="group p-8 border border-white/8 hover:border-luxury-gold/30 transition-all duration-400 hover:bg-white/3">
-                <div className="font-cormorant text-6xl font-light text-luxury-gold/12 mb-4">
+      <section className="section-pad bg-luxury-black relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-luxury-gold/8 to-transparent" />
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 h-px w-full bg-gradient-to-r from-transparent via-luxury-gold/8 to-transparent" />
+          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full border border-luxury-gold/5" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full border border-luxury-gold/5" />
+        </div>
+
+        <div className="container-luxury relative z-10">
+          <SectionHeader eyebrow="How We Work" title={<>Our <em className="italic text-luxury-gold font-light">Signature</em> Process</>} light className="mb-20" />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0.5 bg-white/5">
+            {PROCESS_STEPS.map((step, i) => (
+              <div
+                key={step.step}
+                className="group relative bg-luxury-black p-10 overflow-hidden transition-all duration-500 hover:bg-white/[0.03]"
+              >
+                {/* Top gold bar — slides in on hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                {/* Step number watermark */}
+                <div
+                  className="absolute -right-3 -top-4 font-cormorant font-light leading-none select-none pointer-events-none transition-all duration-500 group-hover:text-luxury-gold/10"
+                  style={{ fontSize: "clamp(80px,10vw,120px)", color: "rgba(200,168,107,0.04)" }}
+                >
                   {String(step.step).padStart(2, "0")}
                 </div>
-                <h3 className="font-cormorant text-xl text-white mb-3">{step.title}</h3>
-                <p className="text-body-sm text-white/40 leading-relaxed font-light">{step.description}</p>
+
+                {/* Step indicator */}
+                <div className="flex items-center gap-3 mb-7">
+                  <div className="w-8 h-8 border border-luxury-gold/30 group-hover:border-luxury-gold group-hover:bg-luxury-gold/10 flex items-center justify-center transition-all duration-400">
+                    <span className="font-inter text-[10px] tracking-widest text-luxury-gold/60 group-hover:text-luxury-gold transition-colors duration-400">
+                      {String(step.step).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="flex-1 h-px bg-gradient-to-r from-luxury-gold/30 to-transparent group-hover:from-luxury-gold/60 transition-all duration-400" />
+                </div>
+
+                {/* Title */}
+                <h3 className="font-cormorant text-2xl font-light text-white group-hover:text-luxury-gold transition-colors duration-400 mb-4 leading-snug">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-body-sm text-white/40 group-hover:text-white/60 leading-relaxed font-light transition-colors duration-400">
+                  {step.description}
+                </p>
+
+                {/* Bottom corner accent */}
+                <div className="absolute bottom-4 right-4 w-5 h-5 border-b border-r border-luxury-gold/0 group-hover:border-luxury-gold/40 transition-all duration-400" />
+
+                {/* Connector dot for flow */}
+                {i < PROCESS_STEPS.length - 1 && (
+                  <div className="hidden lg:block absolute -right-[3px] top-1/2 -translate-y-1/2 w-[5px] h-[5px] rounded-full bg-luxury-gold/20 group-hover:bg-luxury-gold/60 transition-colors duration-400 z-10" />
+                )}
               </div>
             ))}
+          </div>
+
+          {/* Bottom flow line */}
+          <div className="mt-12 flex items-center justify-center gap-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-luxury-gold/20" />
+            <span className="eyebrow text-[9px] text-luxury-gold/50 tracking-[0.3em]">Six Steps to Extraordinary</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-luxury-gold/20" />
           </div>
         </div>
       </section>
