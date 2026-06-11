@@ -341,5 +341,4 @@ export const NAV_LINKS = [
   { label: "Services", href: "/services"  },
   { label: "Process",  href: "/process"   },
   { label: "Gallery",  href: "/gallery"   },
-  { label: "Journal",  href: "/blog"      },
 ];
