@@ -104,10 +104,10 @@ export default function AboutPage() {
                 className={`relative py-16 px-8 text-center border-r border-luxury-gold/15 last:border-r-0 overflow-hidden group hover:bg-luxury-cream/50 transition-colors duration-400 ${i >= 2 ? "border-t border-luxury-gold/15 lg:border-t-0" : ""}`}
               >
                 {/* Concentric circles — top right */}
-                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
-                  <div className="w-20 h-20 rounded-full border border-luxury-gold/8 group-hover:border-luxury-gold/22 transition-colors duration-500" />
-                  <div className="absolute inset-3 rounded-full border border-luxury-gold/6 group-hover:border-luxury-gold/16 transition-colors duration-500" />
-                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                <div className="absolute -top-6 -right-6 pointer-events-none select-none" style={{width:"88px",height:"88px"}}>
+                  <div className="absolute inset-0 rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.35)"}} />
+                  <div className="absolute inset-[14px] rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.25)"}} />
+                  <div className="absolute inset-[28px] rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.18)"}} />
                 </div>
                 {/* Bottom-left bracket */}
                 <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
@@ -136,10 +136,10 @@ export default function AboutPage() {
                 {/* Gold top bar */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 {/* Concentric circles corner */}
-                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
-                  <div className="w-20 h-20 rounded-full border border-luxury-gold/7 group-hover:border-luxury-gold/20 transition-colors duration-500" />
-                  <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/14 transition-colors duration-500" />
-                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                <div className="absolute -top-6 -right-6 pointer-events-none select-none" style={{width:"96px",height:"96px"}}>
+                  <div className="absolute inset-0 rounded-full transition-all duration-500" style={{border:"1.5px solid rgba(200,168,107,0.35)"}} />
+                  <div className="absolute inset-[14px] rounded-full transition-all duration-500" style={{border:"1.5px solid rgba(200,168,107,0.25)"}} />
+                  <div className="absolute inset-[28px] rounded-full transition-all duration-500" style={{border:"1.5px solid rgba(200,168,107,0.18)"}} />
                 </div>
                 {/* Bottom corner brackets */}
                 <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/35 transition-all duration-400" />
@@ -157,10 +157,10 @@ export default function AboutPage() {
                 {/* Gold top bar */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-gold/0 via-luxury-gold to-luxury-gold/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 {/* Concentric circles — top right */}
-                <div className="absolute -top-5 -right-5 pointer-events-none select-none">
-                  <div className="w-18 h-18 rounded-full border border-luxury-gold/7 group-hover:border-luxury-gold/20 transition-colors duration-500" style={{width:"72px",height:"72px"}} />
-                  <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/14 transition-colors duration-500" />
-                  <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                <div className="absolute -top-6 -right-6 pointer-events-none select-none" style={{width:"88px",height:"88px"}}>
+                  <div className="absolute inset-0 rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.35)"}} />
+                  <div className="absolute inset-[14px] rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.25)"}} />
+                  <div className="absolute inset-[28px] rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.18)"}} />
                 </div>
                 {/* Corner brackets */}
                 <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />

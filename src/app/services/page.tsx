@@ -60,10 +60,10 @@ export default function ServicesPage() {
                 {/* Content */}
                 <div className="p-10 flex-1 relative">
                   {/* Concentric circles — top right of content area */}
-                  <div className="absolute -top-5 -right-5 pointer-events-none select-none">
-                    <div className="w-20 h-20 rounded-full border border-luxury-gold/7 group-hover:border-luxury-gold/22 transition-colors duration-500" />
-                    <div className="absolute inset-3 rounded-full border border-luxury-gold/5 group-hover:border-luxury-gold/15 transition-colors duration-500" />
-                    <div className="absolute inset-6 rounded-full border border-luxury-gold/4 group-hover:border-luxury-gold/10 transition-colors duration-500" />
+                  <div className="absolute -top-6 -right-6 pointer-events-none select-none" style={{width:"88px",height:"88px"}}>
+                    <div className="absolute inset-0 rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.35)"}} />
+                    <div className="absolute inset-[14px] rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.25)"}} />
+                    <div className="absolute inset-[28px] rounded-full" style={{border:"1.5px solid rgba(200,168,107,0.18)"}} />
                   </div>
                   {/* Bottom corner brackets */}
                   <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-all duration-400" />
